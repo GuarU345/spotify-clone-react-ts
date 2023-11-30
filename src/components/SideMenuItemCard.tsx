@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { AlbumsService } from "../services/albums";
+import { LikedAlbums } from "../types/album";
 
 export const SideMenuItemCard = () => {
-  const [likedAlbums, setLikedAlbums] = useState([]);
+  const [likedAlbums, setLikedAlbums] = useState<LikedAlbums[]>([]);
 
   const getLikedAlbums = async () => {
     const data = await AlbumsService.getLikedAlbums();
-    console.log(data);
     setLikedAlbums(data);
   };
 
