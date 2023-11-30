@@ -1,5 +1,6 @@
 import { HomeIcon, LibraryIcon, SearchIcon } from "../icons/Icons";
 import { SideMenuItem } from "./SideMenuItem";
+import { SideMenuItemCard } from "./SideMenuItemCard";
 
 const AsideMenu = () => {
   return (
@@ -23,7 +24,7 @@ const AsideMenu = () => {
             <LibraryIcon />
             Library
           </SideMenuItem>
-          {/* <SideMenuItemCard /> */}
+          <SideMenuItemCard />
         </ul>
       </div>
     </nav>
