@@ -8,6 +8,14 @@ const getLikedAlbums = async () => {
   return data;
 };
 
+const getAlbums = async () => {
+  const { data } = await axios.get(`${API_URL}/albums`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return data;
+};
+
 export const AlbumsService = {
   getLikedAlbums,
+  getAlbums,
 };
