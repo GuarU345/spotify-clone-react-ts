@@ -18,6 +18,16 @@ export interface LikedAlbums {
   artist: string;
 }
 
+export interface AlbumData {
+  id: number;
+  artist: string;
+  name: string;
+  image: string;
+  color: string;
+  songs: [{ id: number; name: string; duration: string }];
+  type: string;
+}
+
 type Color = {
   id: string;
   name: string;
