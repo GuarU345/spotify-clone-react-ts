@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import "./layout.css";
-import AsideMenu from "../components/AsideMenu";
+import AsideMenu from "../components/aside/AsideMenu";
+import { Player } from "../components/player/Player";
 
 type Props = {
   children: ReactNode;
@@ -17,7 +18,9 @@ const Layout = ({ children }: Props) => {
         {children}
       </main>
 
-      <footer className="[grid-area:player] min-h-[70px] mt-[10px] px-2"></footer>
+      <footer className="[grid-area:player] min-h-[70px] mt-[10px] px-2">
+        <Player />
+      </footer>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import { usePlayerStore } from "../../store/usePlayerStore";
 import { useState } from "react";
-import { getSongsByAlbumId } from "../../services/songs";
+import { SongService } from "../../services/songs";
 
 type Props = {
   id: number;
@@ -25,7 +25,7 @@ export const CardPlayButton = ({ id }: Props) => {
       return;
     }
 
-    const data = await getSongsByAlbumId(selectedAlbum);
+    const data = await SongService.getSongsByAlbumId(selectedAlbum);
     const { songs, id, image, artist, name } = data;
     setIsPlaying(true);
     setCurrentMusic({
