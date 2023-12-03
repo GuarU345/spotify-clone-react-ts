@@ -1,4 +1,4 @@
-import { HomeIcon, LibraryIcon, SearchIcon } from "../icons/Icons";
+import { HomeIcon, LibraryIcon, SearchIcon } from "../../icons/Icons";
 import { SideMenuItem } from "./SideMenuItem";
 import { SideMenuItemCard } from "./SideMenuItemCard";
 

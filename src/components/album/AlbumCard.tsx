@@ -1,5 +1,5 @@
-import { Album } from "../types/album";
-import { CardPlayButton } from "./player/CardPlayButton";
+import { Album } from "../../types/album";
+import { CardPlayButton } from "../player/CardPlayButton";
 
 type Props = {
   album: Album;
