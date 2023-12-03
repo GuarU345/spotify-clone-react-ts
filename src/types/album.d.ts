@@ -13,8 +13,8 @@ export interface Album {
 
 export interface LikedAlbums {
   id: number;
-  album: string;
-  albumImage: string;
+  name: string;
+  image: string;
   artist: string;
 }
 
