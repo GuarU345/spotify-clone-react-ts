@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { AlbumCard } from "./AlbumCard";
+import { AlbumCard } from "./album/AlbumCard";
 import { AlbumsService } from "../services/albums";
 import { Album } from "../types/album";
+import { PlaylistCard } from "./playlist/PlaylistCard";
 
 export const MainSection = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
@@ -19,11 +20,11 @@ export const MainSection = () => {
       <main className="flex flex-col gap-4 relative z-10 px-6 pt-10">
         <div className="flex flex-col gap-10">
           <p className="text-2xl">Buenos Dias</p>
-          {/* <MainPlaylistCard /> */}
+          <PlaylistCard />
         </div>
         <div className="flex flex-wrap mt-6 gap-4">
           {albums.length > 0
-            ? albums.map((album) => <AlbumCard album={album} />)
+            ? albums.map((album) => <AlbumCard key={album.id} album={album} />)
             : null}
         </div>
 
