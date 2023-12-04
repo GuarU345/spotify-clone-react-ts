@@ -66,6 +66,8 @@ export const usePlayerStore = create((set, get) => ({
   },
   changeVolume: (volume) => {
     const { sound } = get();
-    sound.volume(volume);
+    if (sound !== null) {
+      sound.volume(volume);
+    }
   },
 }));

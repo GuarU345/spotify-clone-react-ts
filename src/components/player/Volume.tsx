@@ -1,10 +1,15 @@
 import { useEffect } from "react";
 import { usePlayerStore } from "../../store/usePlayerStore";
-import { BsVolumeDown } from "react-icons/bs";
 import { Slider } from "./Slider";
+import {
+  VolumeMax,
+  VolumeMedium,
+  VolumeMin,
+  VolumeSilence,
+} from "../../icons/Icons";
 
 export const Volume = () => {
-  const { sound, changeVolume, setVolume } = usePlayerStore();
+  const { sound, changeVolume, setVolume, volume } = usePlayerStore();
 
   const handleChange = (value) => {
     const newVolume = value / 100;
@@ -18,13 +23,22 @@ export const Volume = () => {
     }
   }, [sound]);
   return (
-    <div className="flex items-center">
-      <button type="button">
-        <BsVolumeDown className="text-2xl text-gray-400 hover:text-white" />
+    <div className="flex items-center gap-1">
+      <button type="button" className="text-xl text-gray-400 hover:text-white">
+        {volume <= 0 ? (
+          <VolumeSilence />
+        ) : volume < 0.3 ? (
+          <VolumeMin />
+        ) : volume < 0.7 ? (
+          <VolumeMedium />
+        ) : (
+          <VolumeMax />
+        )}
       </button>
       <Slider
         className="w-[95px]"
-        defaultValue={[10]}
+        defaultValue={[volume]}
+        value={[volume * 100]}
         max={100}
         min={0}
         onValueChange={handleChange}
