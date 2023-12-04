@@ -4,7 +4,7 @@ import { BsVolumeDown } from "react-icons/bs";
 import { Slider } from "./Slider";
 
 export const Volume = () => {
-  const { sound, changeVolume, volume, setVolume } = usePlayerStore();
+  const { sound, changeVolume, setVolume } = usePlayerStore();
 
   const handleChange = (value) => {
     const newVolume = value / 100;
@@ -24,7 +24,7 @@ export const Volume = () => {
       </button>
       <Slider
         className="w-[95px]"
-        defaultValue={[volume]}
+        defaultValue={[10]}
         max={100}
         min={0}
         onValueChange={handleChange}
