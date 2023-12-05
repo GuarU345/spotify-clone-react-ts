@@ -15,11 +15,11 @@ export const PlaylistSongsTable = () => {
 
   useEffect(() => {
     getLikedSongs();
-  });
+  }, []);
   return (
     <div className="flex flex-col gap-4">
       <div className="rounded-full w-[50px] h-[50px] bg-green-500 grid place-content-center hover:scale-105">
-        <p className="text-black">
+        <p className="text-black text-2xl">
           <BsPlayFill />
         </p>
       </div>
