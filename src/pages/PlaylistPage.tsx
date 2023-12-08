@@ -3,12 +3,14 @@ import Layout from "../layouts/Layout";
 import { LikedSongsPlaylist } from "../types/playlist";
 import { PlaylistService } from "../services/playlists";
 import { PlaylistSongsTable } from "../components/playlist/PlaylistSongsTable";
+import { useAuthStore } from "../store/useAuthStore";
 
 export const PlaylistPage = () => {
   const [playlist, setPlaylist] = useState<LikedSongsPlaylist>();
+  const { token } = useAuthStore();
 
   const getLikedSongsPlaylist = async () => {
-    const data = await PlaylistService.getLikedSongsPlaylist();
+    const data = await PlaylistService.getLikedSongsPlaylist(token);
     setPlaylist(data);
   };
 

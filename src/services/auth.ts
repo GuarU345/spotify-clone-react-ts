@@ -1,0 +1,11 @@
+import axios from "axios";
+import { API_URL } from "../utils/helpers";
+
+const signin = async (body) => {
+  const { data } = await axios.post(`${API_URL}/signin`, body);
+  return data;
+};
+
+export const AuthService = {
+  signin,
+};

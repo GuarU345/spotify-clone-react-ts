@@ -3,6 +3,7 @@ import { IoTimeOutline } from "react-icons/io5";
 import { SongService } from "../../services/songs";
 import { LikedSongs, Song } from "../../types/song";
 import { SongLike } from "../SongLike";
+import { useAuthStore } from "../../store/useAuthStore";
 
 type Props = {
   songs: Song[];
@@ -11,9 +12,10 @@ type Props = {
 
 export const AlbumSongsTable = ({ songs, artist }: Props) => {
   const [newSongs, setNewSongs] = useState<LikedSongs[]>([]);
+  const { token } = useAuthStore();
 
   const getUserLikedSongs = async () => {
-    const likeds = await SongService.getUserLikedSongsByAlbum(songs);
+    const likeds = await SongService.getUserLikedSongsByAlbum(token, songs);
     const likedSongs = songs.map((song) => {
       const isLiked = likeds.includes(song.id);
       return {

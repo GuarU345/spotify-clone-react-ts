@@ -7,7 +7,7 @@ const AsideMenu = () => {
     <nav className="flex flex-col flex-1 gap-2">
       <div className="bg-zinc-900 rounded-lg p-2">
         <ul>
-          <SideMenuItem href="/">
+          <SideMenuItem href="/home">
             <HomeIcon />
             Home
           </SideMenuItem>

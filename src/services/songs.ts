@@ -1,7 +1,7 @@
 import axios from "axios";
-import { API_URL, token, userId } from "../utils/helpers";
+import { API_URL, userId } from "../utils/helpers";
 
-const getSongsByAlbumId = async (albumId: number) => {
+const getSongsByAlbumId = async (token: string | null, albumId: number) => {
   const { data } = await axios.get(`${API_URL}/albums/${albumId}/songs`, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -10,7 +10,10 @@ const getSongsByAlbumId = async (albumId: number) => {
   return data;
 };
 
-export const getUserLikedSongsByAlbum = async (songIds: unknown) => {
+export const getUserLikedSongsByAlbum = async (
+  token: string | null,
+  songIds: unknown
+) => {
   const body = {
     songs: songIds,
   };
@@ -22,7 +25,7 @@ export const getUserLikedSongsByAlbum = async (songIds: unknown) => {
   return data;
 };
 
-const getLikedSongs = async () => {
+const getLikedSongs = async (token: string | null) => {
   const resp = await fetch(`http://localhost:3000/api/users/${userId}/songs`, {
     headers: { Authorization: `Bearer ${token}` },
   });

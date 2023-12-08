@@ -6,14 +6,16 @@ import { AlbumData } from "../types/album";
 import { AlbumSongsTable } from "../components/album/AlbumSongsTable";
 import { CardPlayButton } from "../components/player/CardPlayButton";
 import { AlbumLike } from "../components/album/AlbumLike";
+import { useAuthStore } from "../store/useAuthStore";
 
 export const AlbumPage = () => {
   const [album, setAlbum] = useState<AlbumData>();
   const [numberSongs, setNumberSongs] = useState(0);
   const { id } = useParams();
+  const { token } = useAuthStore();
 
   const getAlbumDataById = async () => {
-    const data = await AlbumsService.getAlbumDataById(id!);
+    const data = await AlbumsService.getAlbumDataById(token, id!);
     setAlbum(data);
     setNumberSongs(data.songs.length);
   };

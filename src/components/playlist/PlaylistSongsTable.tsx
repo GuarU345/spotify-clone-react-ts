@@ -4,12 +4,14 @@ import { IoTimeOutline } from "react-icons/io5";
 import { LikedSongItem } from "../LikedSongItem";
 import { SongService } from "../../services/songs";
 import { SongLiked } from "../../types/song";
+import { useAuthStore } from "../../store/useAuthStore";
 
 export const PlaylistSongsTable = () => {
   const [likedSongs, setLikedSongs] = useState<SongLiked[]>([]);
+  const { token } = useAuthStore();
 
   const getLikedSongs = async () => {
-    const data = await SongService.getLikedSongs();
+    const data = await SongService.getLikedSongs(token);
     setLikedSongs(data);
   };
 

@@ -3,12 +3,14 @@ import { AlbumCard } from "./album/AlbumCard";
 import { AlbumsService } from "../services/albums";
 import { Album } from "../types/album";
 import { PlaylistCard } from "./playlist/PlaylistCard";
+import { useAuthStore } from "../store/useAuthStore";
 
 export const MainSection = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
+  const { token } = useAuthStore();
 
   const getAlbums = async () => {
-    const data = await AlbumsService.getAlbums();
+    const data = await AlbumsService.getAlbums(token);
     setAlbums(data);
   };
 
