@@ -7,6 +7,7 @@ import { Auth } from "./components/Auth";
 import { useAuthStore } from "./store/useAuthStore";
 import { ProtectedRoutes } from "./components/ProtectedRoutes";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { Toaster } from "sonner";
 
 function App() {
   const { isLogin } = useAuthStore();
@@ -25,6 +26,7 @@ function App() {
             <Route path="/signin" element={<Auth isLogin={isLogin} />} />
           </Routes>
         </BrowserRouter>
+        <Toaster position="bottom-center" />
       </QueryClientProvider>
     </>
   );

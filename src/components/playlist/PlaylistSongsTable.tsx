@@ -1,23 +1,13 @@
-import { useEffect, useState } from "react";
 import { BsPlayFill } from "react-icons/bs";
 import { IoTimeOutline } from "react-icons/io5";
 import { LikedSongItem } from "../LikedSongItem";
-import { SongService } from "../../services/songs";
-import { SongLiked } from "../../types/song";
 import { useAuthStore } from "../../store/useAuthStore";
+import { useFetchLikedSongs } from "../../hooks/useFetchSongs";
 
 export const PlaylistSongsTable = () => {
-  const [likedSongs, setLikedSongs] = useState<SongLiked[]>([]);
   const { token } = useAuthStore();
+  const { data } = useFetchLikedSongs(token);
 
-  const getLikedSongs = async () => {
-    const data = await SongService.getLikedSongs(token);
-    setLikedSongs(data);
-  };
-
-  useEffect(() => {
-    getLikedSongs();
-  }, []);
   return (
     <div className="flex flex-col gap-4">
       <div className="rounded-full w-[50px] h-[50px] bg-green-500 grid place-content-center hover:scale-105">
@@ -38,15 +28,13 @@ export const PlaylistSongsTable = () => {
           </tr>
         </thead>
         <tbody>
-          {likedSongs.length > 0
-            ? likedSongs.map((likedSong, index) => (
-                <LikedSongItem
-                  key={likedSong.id}
-                  likedSong={likedSong}
-                  index={index}
-                />
-              ))
-            : null}
+          {data?.map((likedSong, index) => (
+            <LikedSongItem
+              key={likedSong.id}
+              likedSong={likedSong}
+              index={index}
+            />
+          ))}
         </tbody>
       </table>
     </div>
