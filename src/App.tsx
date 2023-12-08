@@ -6,22 +6,26 @@ import { PlaylistPage } from "./pages/PlaylistPage";
 import { Auth } from "./components/Auth";
 import { useAuthStore } from "./store/useAuthStore";
 import { ProtectedRoutes } from "./components/ProtectedRoutes";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 function App() {
   const { isLogin } = useAuthStore();
+  const queryClient = new QueryClient();
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Navigate to="/signin" />} />
-          <Route element={<ProtectedRoutes isAllowed={isLogin} />}>
-            <Route path="/home" element={<Main />} />
-            <Route path="/album/:id" element={<AlbumPage />} />
-            <Route path="/playlist/:id" element={<PlaylistPage />} />
-          </Route>
-          <Route path="/signin" element={<Auth isLogin={isLogin} />} />
-        </Routes>
-      </BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Navigate to="/signin" />} />
+            <Route element={<ProtectedRoutes isAllowed={isLogin} />}>
+              <Route path="/home" element={<Main />} />
+              <Route path="/album/:id" element={<AlbumPage />} />
+              <Route path="/playlist/:id" element={<PlaylistPage />} />
+            </Route>
+            <Route path="/signin" element={<Auth isLogin={isLogin} />} />
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
     </>
   );
 }
