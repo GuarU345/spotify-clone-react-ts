@@ -35,7 +35,7 @@ export const Signin = () => {
   return (
     <div className="grid place-content-center h-screen bg-zinc-900">
       <div className="flex flex-col bg-zinc-950 p-2 w-[500px] h-[500px]">
-        <h1 className="text-center text-3xl">Iniciar sesión</h1>
+        <h1 className="text-center text-3xl">Inicia sesión</h1>
         <form
           onSubmit={handleSubmit}
           className="flex flex-col gap-6 h-full justify-center items-center"

@@ -30,7 +30,7 @@ export const AlbumPage = () => {
           style={{
             background: `linear-gradient(to top,#18181b 45%,${album.color} 55%)`,
           }}
-          className={`relative flex flex-col h-full overflow-x-hidden`}
+          className={`relative flex flex-col h-full overflow-x-hidden z-10`}
         >
           <header className="flex flex-row gap-8 px-6 mt-12">
             <picture>
@@ -73,7 +73,7 @@ export const AlbumPage = () => {
 
           <div className="relative z-10 px-6 pt-10"></div>
 
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 -z-[1]"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 z-[-1]"></div>
 
           <section className="p-6">
             <AlbumSongsTable songs={album.songs} artist={album.artist} />
