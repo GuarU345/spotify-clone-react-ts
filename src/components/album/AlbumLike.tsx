@@ -3,6 +3,7 @@ import { Like } from "../Like";
 import { dislikeAlbum, likeAlbum } from "../../services/user_actions";
 import { AlbumsService } from "../../services/albums";
 import { useAuthStore } from "../../store/useAuthStore";
+import { useQueryClient } from "react-query";
 
 type Props = {
   albumId: number;
@@ -11,6 +12,7 @@ type Props = {
 export const AlbumLike = ({ albumId }: Props) => {
   const [isLiked, setIsLiked] = useState<boolean>();
   const { token } = useAuthStore();
+  const queryClient = useQueryClient();
 
   const isLikedAlbum = async () => {
     const { liked } = await AlbumsService.checkUserLikesAlbum(token, albumId);
@@ -25,6 +27,7 @@ export const AlbumLike = ({ albumId }: Props) => {
       try {
         await likeAlbum(token, albumId);
         setIsLiked(true);
+        await queryClient.invalidateQueries({ queryKey: "likedAlbums" });
       } catch (error) {
         console.error(error);
       }
@@ -32,6 +35,7 @@ export const AlbumLike = ({ albumId }: Props) => {
       try {
         await dislikeAlbum(token, albumId);
         setIsLiked(false);
+        await queryClient.invalidateQueries({ queryKey: "likedAlbums" });
       } catch (error) {
         console.error(error);
       }
