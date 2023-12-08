@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { dislikeSong, likeSong } from "../services/user_actions";
-import { Like } from "./Like";
-import { useAuthStore } from "../store/useAuthStore";
+import { dislikeSong, likeSong } from "../../services/user_actions";
+import { Like } from "../Like";
+import { useAuthStore } from "../../store/useAuthStore";
 import { toast } from "sonner";
 import { useQueryClient } from "react-query";
 

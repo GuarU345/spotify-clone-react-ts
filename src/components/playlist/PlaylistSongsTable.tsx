@@ -1,6 +1,6 @@
 import { BsPlayFill } from "react-icons/bs";
 import { IoTimeOutline } from "react-icons/io5";
-import { LikedSongItem } from "../LikedSongItem";
+import { LikedSongItem } from "../song/LikedSongItem";
 import { useAuthStore } from "../../store/useAuthStore";
 import { useFetchLikedSongs } from "../../hooks/useFetchSongs";
 

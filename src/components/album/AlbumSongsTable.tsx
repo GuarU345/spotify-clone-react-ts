@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { IoTimeOutline } from "react-icons/io5";
 import { SongService } from "../../services/songs";
 import { LikedSongs, Song } from "../../types/song";
-import { SongLike } from "../SongLike";
+import { SongLike } from "../song/SongLike";
 import { useAuthStore } from "../../store/useAuthStore";
 
 type Props = {

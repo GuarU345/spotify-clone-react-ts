@@ -3,3 +3,7 @@
   background: #09090b;
   color: #ffffff;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
