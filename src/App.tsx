@@ -3,18 +3,23 @@ import "./App.css";
 import { Main } from "./pages/Main";
 import { AlbumPage } from "./pages/AlbumPage";
 import { PlaylistPage } from "./pages/PlaylistPage";
-import { Signin } from "./pages/auth/Signin";
+import { Auth } from "./components/Auth";
+import { useAuthStore } from "./store/useAuthStore";
+import { ProtectedRoutes } from "./components/ProtectedRoutes";
 
 function App() {
+  const { isLogin } = useAuthStore();
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to="/signin" />} />
-          <Route path="/home" element={<Main />} />
-          <Route path="/album/:id" element={<AlbumPage />} />
-          <Route path="/playlist/:id" element={<PlaylistPage />} />
-          <Route path="/signin" element={<Signin />} />
+          <Route element={<ProtectedRoutes isAllowed={isLogin} />}>
+            <Route path="/home" element={<Main />} />
+            <Route path="/album/:id" element={<AlbumPage />} />
+            <Route path="/playlist/:id" element={<PlaylistPage />} />
+          </Route>
+          <Route path="/signin" element={<Auth isLogin={isLogin} />} />
         </Routes>
       </BrowserRouter>
     </>

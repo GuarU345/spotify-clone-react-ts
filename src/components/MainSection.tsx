@@ -4,6 +4,7 @@ import { AlbumsService } from "../services/albums";
 import { Album } from "../types/album";
 import { PlaylistCard } from "./playlist/PlaylistCard";
 import { useAuthStore } from "../store/useAuthStore";
+import { UserPanel } from "./user/UserPanel";
 
 export const MainSection = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
@@ -21,6 +22,9 @@ export const MainSection = () => {
     <main id="playlist-container" className="relative">
       <main className="flex flex-col gap-4 relative z-10 px-6 pt-10">
         <div className="flex flex-col gap-10">
+          <div className="flex justify-end">
+            <UserPanel />
+          </div>
           <p className="text-2xl">Buenos Dias</p>
           <PlaylistCard />
         </div>
