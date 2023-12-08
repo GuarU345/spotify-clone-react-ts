@@ -2,15 +2,21 @@ import { FormEvent } from "react";
 import { AuthService } from "../../services/auth";
 import { useAuthStore } from "../../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 export const Signin = () => {
   const { setIsLogin, setToken } = useAuthStore();
   const navigate = useNavigate();
   const login = async (body) => {
-    const token = await AuthService.signin(body);
-    setIsLogin(true);
-    setToken(token);
-    navigate("/home");
+    try {
+      const token = await AuthService.signin(body);
+      setIsLogin(true);
+      setToken(token);
+      navigate("/home");
+      toast.success("Sesión iniciada");
+    } catch (error) {
+      toast("Credenciales invalidas");
+    }
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
