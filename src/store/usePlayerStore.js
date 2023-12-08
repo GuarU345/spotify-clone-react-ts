@@ -38,7 +38,6 @@ export const usePlayerStore = create((set, get) => ({
         setProgress(newSound.seek());
       },
     });
-    newSound.load();
     newSound.on("load", () => {
       const newDuration = newSound.duration();
       set({ duration: newDuration });
