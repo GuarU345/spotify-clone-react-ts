@@ -1,0 +1,14 @@
+.index-row:hover {
+    & .number-song {
+        display: none;
+    }
+
+    & .play-icon {
+        display: block;
+        color: white;
+    }
+}
+
+.play-icon {
+    display: none;
+}
