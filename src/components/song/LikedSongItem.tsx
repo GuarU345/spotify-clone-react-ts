@@ -12,7 +12,6 @@ type Props = {
 };
 
 export const LikedSongItem = ({ likedSong, index }: Props) => {
-  console.log(likedSong);
   const { token } = useAuthStore();
   const { setIsPlaying, setCurrentMusic, setCurrentSong, playMusic } =
     usePlayerStore();
@@ -30,7 +29,9 @@ export const LikedSongItem = ({ likedSong, index }: Props) => {
         artist,
       },
     });
-    const songIndex = songs.findIndex((song: Song) => song.id === likedSong.id);
+    const songIndex = songs.findIndex(
+      (song: Song) => song.id === likedSong.song.id
+    );
     setCurrentSong(songIndex);
     playMusic();
   };
@@ -42,7 +43,7 @@ export const LikedSongItem = ({ likedSong, index }: Props) => {
         </p>
         <p
           onClick={handlePlaySong}
-          title={`Reproducir ${likedSong.name} de ${likedSong.artist}`}
+          title={`Reproducir ${likedSong.song.name} de ${likedSong.artist.name}`}
           className="play-icon text-base"
         >
           <BsPlayFill />
@@ -57,8 +58,8 @@ export const LikedSongItem = ({ likedSong, index }: Props) => {
             alt={likedSong.album.name}
           />
           <div className="flex-col">
-            <strong className="text-white">{likedSong.name}</strong>
-            <p className="text-gray-400">{likedSong.artist}</p>
+            <strong className="text-white">{likedSong.song.name}</strong>
+            <p className="text-gray-400">{likedSong.artist.name}</p>
           </div>
         </div>
       </td>
@@ -70,10 +71,10 @@ export const LikedSongItem = ({ likedSong, index }: Props) => {
           title="Eliminar de Tu biblioteca"
           className="text-green-500 text-base hover:cursor-pointer"
         >
-          <SongLike liked={true} songId={likedSong.id} />
+          <SongLike liked={true} songId={likedSong.song.id} />
         </p>
       </td>
-      <td className="px-4 py-2">{likedSong.duration}</td>
+      <td className="px-4 py-2">{likedSong.song.duration}</td>
     </tr>
   );
 };

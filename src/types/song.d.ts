@@ -4,8 +4,11 @@ export interface Song {
   duration: string;
 }
 
-export interface SongLiked extends Song {
-  artist: string;
+export interface SongLiked {
+  song: Song;
+  artist: {
+    name: string;
+  };
   album: {
     id: number;
     name: string;

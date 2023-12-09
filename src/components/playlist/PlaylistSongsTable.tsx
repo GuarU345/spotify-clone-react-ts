@@ -3,7 +3,6 @@ import { IoTimeOutline } from "react-icons/io5";
 import { LikedSongItem } from "../song/LikedSongItem";
 
 export const PlaylistSongsTable = ({ songs }) => {
-  console.log(songs);
   return (
     <div className="flex flex-col gap-4">
       <div className="rounded-full w-[50px] h-[50px] bg-green-500 grid place-content-center hover:scale-105">
@@ -24,7 +23,7 @@ export const PlaylistSongsTable = ({ songs }) => {
           </tr>
         </thead>
         <tbody>
-          {songs?.map((likedSong, index) => (
+          {songs?.map((likedSong, index: number) => (
             <LikedSongItem
               key={likedSong.song.id}
               likedSong={likedSong}

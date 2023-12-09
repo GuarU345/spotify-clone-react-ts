@@ -20,7 +20,7 @@ export const SongLike = ({ liked, songId }: Props) => {
         toast.dismiss();
         await likeSong(token, songId);
         setIsLiked(true);
-        await queryClient.invalidateQueries({ queryKey: "likedSongs" });
+        await queryClient.invalidateQueries({ queryKey: "playlistData" });
         toast("Añadida a canciones que te gustan");
       } catch (error) {
         console.error(error);
@@ -30,7 +30,7 @@ export const SongLike = ({ liked, songId }: Props) => {
         toast.dismiss();
         await dislikeSong(token, songId);
         setIsLiked(false);
-        await queryClient.invalidateQueries({ queryKey: "likedSongs" });
+        await queryClient.invalidateQueries({ queryKey: "playlistData" });
         toast("Quitada de las canciones que te gustan");
       } catch (error) {
         console.error(error);

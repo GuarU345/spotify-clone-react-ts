@@ -1,26 +1,25 @@
-import { useEffect, useState } from "react";
 import Layout from "../layouts/Layout";
-import { Playlist } from "../types/playlist";
-import { PlaylistService } from "../services/playlists";
 import { PlaylistSongsTable } from "../components/playlist/PlaylistSongsTable";
 import { useAuthStore } from "../store/useAuthStore";
 import { useParams } from "react-router-dom";
+import { useFetchLikedSongsPlaylist } from "../hooks/useFetchPlaylists";
 
 export const PlaylistPage = () => {
-  const [playlist, setPlaylist] = useState<Playlist>();
   const { id } = useParams();
   const { token } = useAuthStore();
-
-  const getPlaylistData = async () => {
-    const data = await PlaylistService.getPlaylistDataById(token, id!);
-    setPlaylist(data);
-  };
-
-  useEffect(() => {
-    getPlaylistData();
-  }, []);
+  const {
+    data: playlist,
+    error,
+    isLoading,
+  } = useFetchLikedSongsPlaylist(token, id);
+  console.log(playlist);
   return (
     <Layout>
+      {isLoading && (
+        <>
+          <p>Loading...</p>
+        </>
+      )}
       <div
         id="playlist-container"
         className="relative flex flex-col h-full bg-gradient-to-b p-4 from-violet-600 via-zinc-950 overflow-x-hidden"
@@ -41,7 +40,7 @@ export const PlaylistPage = () => {
               </h1>
             </div>
             <div>
-              <p>{playlist?.songs.length} canciones</p>
+              <p>{playlist?.songs?.length} canciones</p>
             </div>
           </div>
         </header>
