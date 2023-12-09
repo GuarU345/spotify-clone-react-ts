@@ -45,10 +45,6 @@ export const usePlayerStore = create((set, get) => ({
       set({ duration: newDuration });
     });
 
-    newSound.on("loaderror", () => {
-      console.log("no jalo jaja");
-    });
-
     newSound.play();
     set({ sound: newSound });
   },

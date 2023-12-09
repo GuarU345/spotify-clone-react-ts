@@ -12,7 +12,6 @@ export const PlaylistPage = () => {
     error,
     isLoading,
   } = useFetchLikedSongsPlaylist(token, id);
-  console.log(playlist);
   return (
     <Layout>
       {isLoading && (

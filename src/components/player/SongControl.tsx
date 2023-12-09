@@ -37,7 +37,6 @@ export const SongControl = () => {
         cancelAnimationFrame(updateProgress);
       });
     }
-    console.log("aqui?x2");
 
     // return () => {
     //   sound.unload();
