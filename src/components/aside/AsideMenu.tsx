@@ -9,11 +9,11 @@ const AsideMenu = () => {
         <ul>
           <SideMenuItem href="/home">
             <HomeIcon />
-            Home
+            Inicio
           </SideMenuItem>
           <SideMenuItem href="/#">
             <SearchIcon />
-            Search
+            Buscar
           </SideMenuItem>
         </ul>
       </div>
@@ -22,7 +22,7 @@ const AsideMenu = () => {
         <ul>
           <SideMenuItem href="/">
             <LibraryIcon />
-            Library
+            Tu biblioteca
           </SideMenuItem>
           <SideMenuItemCard />
         </ul>

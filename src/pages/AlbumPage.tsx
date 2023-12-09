@@ -7,6 +7,7 @@ import { AlbumSongsTable } from "../components/album/AlbumSongsTable";
 import { CardPlayButton } from "../components/player/CardPlayButton";
 import { AlbumLike } from "../components/album/AlbumLike";
 import { useAuthStore } from "../store/useAuthStore";
+import { usePlayerStore } from "../store/usePlayerStore";
 
 export const AlbumPage = () => {
   const [album, setAlbum] = useState<AlbumData>();
@@ -22,6 +23,7 @@ export const AlbumPage = () => {
 
   useEffect(() => {
     getAlbumDataById();
+    console.log("aqui?");
   }, []);
   return (
     <Layout>

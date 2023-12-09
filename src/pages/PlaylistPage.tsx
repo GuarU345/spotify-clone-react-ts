@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
 import Layout from "../layouts/Layout";
-import { LikedSongsPlaylist } from "../types/playlist";
+import { Playlist } from "../types/playlist";
 import { PlaylistService } from "../services/playlists";
 import { PlaylistSongsTable } from "../components/playlist/PlaylistSongsTable";
 import { useAuthStore } from "../store/useAuthStore";
+import { useParams } from "react-router-dom";
 
 export const PlaylistPage = () => {
-  const [playlist, setPlaylist] = useState<LikedSongsPlaylist>();
+  const [playlist, setPlaylist] = useState<Playlist>();
+  const { id } = useParams();
   const { token } = useAuthStore();
 
-  const getLikedSongsPlaylist = async () => {
-    const data = await PlaylistService.getLikedSongsPlaylist(token);
+  const getPlaylistData = async () => {
+    const data = await PlaylistService.getPlaylistDataById(token, id!);
     setPlaylist(data);
   };
 
   useEffect(() => {
-    getLikedSongsPlaylist();
+    getPlaylistData();
   }, []);
   return (
     <Layout>
@@ -31,16 +33,16 @@ export const PlaylistPage = () => {
               alt={playlist?.name}
             />
           </picture>
-          <div className="flex flex-col justify-between">
-            <h2 className="flex flex-1 items-end">{playlist?.type}</h2>
+          <div className="flex flex-col justify-end gap-6">
             <div>
+              <h2>{playlist?.type}</h2>
               <h1 className="text-5xl font-bold block text-white">
                 {playlist?.name}
-                <span></span>
               </h1>
             </div>
-
-            <div className="flex-1 flex items-end"></div>
+            <div>
+              <p>{playlist?.songs.length} canciones</p>
+            </div>
           </div>
         </header>
 
@@ -51,7 +53,7 @@ export const PlaylistPage = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 -z-[1]"></div>
 
         <section className="p-6">
-          <PlaylistSongsTable />
+          <PlaylistSongsTable songs={playlist?.songs} />
         </section>
       </div>
     </Layout>

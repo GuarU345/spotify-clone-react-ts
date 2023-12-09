@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Album } from "../../types/album";
 import { CardPlayButton } from "../player/CardPlayButton";
 
@@ -17,9 +18,9 @@ export const AlbumCard = ({ album }: Props) => {
       >
         <CardPlayButton id={album.id} />
       </div>
-      <a
+      <Link
         className="transition-all duration-300 w-44 flex flex-col relative p-2 overflow-hidden gap-2 pb-6 rounded-md"
-        href={`/album/${album.id}`}
+        to={`/album/${album.id}`}
       >
         <picture className="aspect-square w-full h-auto flex-none">
           <img
@@ -37,7 +38,7 @@ export const AlbumCard = ({ album }: Props) => {
             {album.artist.name}
           </p>
         </div>
-      </a>
+      </Link>
     </article>
   );
 };

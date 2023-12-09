@@ -25,12 +25,13 @@ export const usePlayerStore = create((set, get) => ({
   setCurrentSong: (currentSong) => set({ currentSong }),
   setProgress: (progress) => set({ progress }),
   playMusic: async () => {
-    const { currentMusic, currentSong, volume, setProgress } = get();
+    const { currentMusic, currentSong, volume, setProgress, sound } = get();
     const { songs } = currentMusic;
     const findSong = songs[currentSong];
     let { track } = STREAMSONGS.find(
       (streamsong) => streamsong.name === findSong.name
     );
+
     const newSound = new Howl({
       src: [track],
       volume,
@@ -38,10 +39,16 @@ export const usePlayerStore = create((set, get) => ({
         setProgress(newSound.seek());
       },
     });
+
     newSound.on("load", () => {
       const newDuration = newSound.duration();
       set({ duration: newDuration });
     });
+
+    newSound.on("loaderror", () => {
+      console.log("no jalo jaja");
+    });
+
     newSound.play();
     set({ sound: newSound });
   },

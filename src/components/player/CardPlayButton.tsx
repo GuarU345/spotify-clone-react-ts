@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const CardPlayButton = ({ id }: Props) => {
-  const [selectedAlbum] = useState(id);
+  // const [selectedAlbum] = useState(id);
   const {
     currentMusic,
     isPlaying,
@@ -27,13 +27,13 @@ export const CardPlayButton = ({ id }: Props) => {
       return;
     }
 
-    const data = await SongService.getSongsByAlbumId(token, selectedAlbum);
-    const { songs, id, image, artist, name } = data;
+    const data = await SongService.getSongsByAlbumId(token, Number(id));
+    const { songs, id: albumId, image, artist, name } = data;
     setIsPlaying(true);
     setCurrentMusic({
       songs,
       album: {
-        id,
+        id: albumId,
         name,
         image,
         artist,

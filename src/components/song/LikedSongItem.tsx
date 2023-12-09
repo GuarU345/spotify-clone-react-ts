@@ -12,6 +12,7 @@ type Props = {
 };
 
 export const LikedSongItem = ({ likedSong, index }: Props) => {
+  console.log(likedSong);
   const { token } = useAuthStore();
   const { setIsPlaying, setCurrentMusic, setCurrentSong, playMusic } =
     usePlayerStore();

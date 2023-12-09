@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 type Props = {
   href: string;
@@ -8,12 +9,12 @@ type Props = {
 export const SideMenuItem = ({ href, children }: Props) => {
   return (
     <li>
-      <a
+      <Link
         className="flex gap-4 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 font-medium transition duration-300"
-        href={href}
+        to={href}
       >
         {children}
-      </a>
+      </Link>
     </li>
   );
 };

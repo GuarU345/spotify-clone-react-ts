@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { PlaylistService } from "../../services/playlists";
 import { LikedSongsPlaylist } from "../../types/playlist";
 import { useAuthStore } from "../../store/useAuthStore";
+import { Link } from "react-router-dom";
 
 export const PlaylistCard = () => {
   const [playlist, setPlaylist] = useState<LikedSongsPlaylist>();
@@ -18,9 +19,9 @@ export const PlaylistCard = () => {
   return (
     <>
       {playlist?.name ? (
-        <a
+        <Link
           className="w-72 rounded-sm flex items-center gap-2 bg-white/5 hover:cursor-pointer hover:bg-white/10"
-          href={`/playlist/${playlist.id}`}
+          to={`/playlist/${playlist.id}`}
         >
           <picture>
             <img
@@ -33,7 +34,7 @@ export const PlaylistCard = () => {
             <p className="text-sm font-semibold">{playlist.name}</p>
             <span className="text-xs text-gray-300">{playlist.type}</span>
           </div>
-        </a>
+        </Link>
       ) : null}
     </>
   );

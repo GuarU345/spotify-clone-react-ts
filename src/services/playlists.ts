@@ -1,3 +1,4 @@
+import axios from "axios";
 import { API_URL, userId } from "../utils/helpers";
 
 const getLikedSongsPlaylist = async (token) => {
@@ -13,6 +14,19 @@ const getLikedSongsPlaylist = async (token) => {
   };
 };
 
+const getPlaylistDataById = async (token: string, playlistId: string) => {
+  const { data } = await axios.get(`${API_URL}/playlists/${playlistId}/songs`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return {
+    ...data,
+    type: "Lista",
+  };
+};
+
 export const PlaylistService = {
   getLikedSongsPlaylist,
+  getPlaylistDataById,
 };

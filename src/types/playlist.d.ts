@@ -1,10 +1,24 @@
-export interface LikedSongsPlaylist {
-  id: number;
+interface Album {
   name: string;
-  description: string;
   image: string;
-  release_date: string;
-  duration: string;
-  user_id: string;
+}
+
+interface Song {
+  name: string;
+}
+
+interface Artist {
+  name: string;
+}
+
+export interface Playlist {
+  name: string;
+  description: string | null;
+  image: string;
+  songs: Array<{
+    album: Album;
+    song: Song;
+    artist: Artist;
+  }>;
   type: string;
 }

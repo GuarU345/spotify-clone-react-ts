@@ -26,6 +26,7 @@ export const AlbumLike = ({ albumId }: Props) => {
   const handleLikeAlbum = async () => {
     if (isLiked === false) {
       try {
+        toast.dismiss();
         await likeAlbum(token, albumId);
         setIsLiked(true);
         await queryClient.invalidateQueries({ queryKey: "likedAlbums" });
@@ -35,6 +36,7 @@ export const AlbumLike = ({ albumId }: Props) => {
       }
     } else {
       try {
+        toast.dismiss();
         await dislikeAlbum(token, albumId);
         setIsLiked(false);
         await queryClient.invalidateQueries({ queryKey: "likedAlbums" });
