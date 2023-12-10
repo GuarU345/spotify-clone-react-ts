@@ -1,5 +1,6 @@
 import { useAuthStore } from "../../store/useAuthStore";
 import { useFetchLikedAlbums } from "../../hooks/useFetchAlbums";
+import { Link } from "react-router-dom";
 
 export const SideMenuItemCard = () => {
   const { token } = useAuthStore();
@@ -14,7 +15,7 @@ export const SideMenuItemCard = () => {
       )}
       <ul className="flex flex-col gap-2">
         {data?.map((album) => (
-          <a key={album.id} href={`/album/${album.id}`}>
+          <Link key={album.id} to={`/album/${album.id}`}>
             <li className="flex items-center  p-2 gap-2 hover:cursor-pointer hover:bg-white/5">
               <picture>
                 <img
@@ -28,7 +29,7 @@ export const SideMenuItemCard = () => {
                 <span className="text-xs text-gray-300">{album.artist}</span>
               </div>
             </li>
-          </a>
+          </Link>
         ))}
       </ul>
     </>
