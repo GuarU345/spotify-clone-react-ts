@@ -1,6 +1,7 @@
 import { HomeIcon, LibraryIcon, SearchIcon } from "../../icons/Icons";
 import { SideMenuItem } from "./SideMenuItem";
 import { SideMenuItemCard } from "./SideMenuItemCard";
+import { AddPlaylist } from "../playlist/AddPlaylist";
 
 const AsideMenu = () => {
   return (
@@ -20,10 +21,13 @@ const AsideMenu = () => {
 
       <div className="bg-zinc-900 rounded-lg p-2 flex-1">
         <ul>
-          <SideMenuItem href="/">
-            <LibraryIcon />
-            Tu biblioteca
-          </SideMenuItem>
+          <div className="flex gap-10 items-center">
+            <SideMenuItem href="/">
+              <LibraryIcon />
+              Tu biblioteca
+            </SideMenuItem>
+            <AddPlaylist />
+          </div>
           <SideMenuItemCard />
         </ul>
       </div>
