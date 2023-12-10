@@ -2,16 +2,15 @@ import Layout from "../layouts/Layout";
 import { PlaylistSongsTable } from "../components/playlist/PlaylistSongsTable";
 import { useAuthStore } from "../store/useAuthStore";
 import { useParams } from "react-router-dom";
-import { useFetchLikedSongsPlaylist } from "../hooks/useFetchPlaylists";
+import { useFetchPlaylistData } from "../hooks/useFetchPlaylists";
+import { useEffect } from "react";
 
 export const PlaylistPage = () => {
   const { id } = useParams();
   const { token } = useAuthStore();
-  const {
-    data: playlist,
-    error,
-    isLoading,
-  } = useFetchLikedSongsPlaylist(token, id);
+  const { data: playlist, error, isLoading } = useFetchPlaylistData(token, id!);
+
+  useEffect(() => {}, [id]);
   return (
     <Layout>
       {isLoading && (

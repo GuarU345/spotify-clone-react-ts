@@ -1,7 +1,29 @@
 import axios from "axios";
 import { API_URL, userId } from "../utils/helpers";
 
-const getLikedSongsPlaylist = async (token) => {
+const getUserPlaylists = async (token: string) => {
+  const { data } = await axios.get(`${API_URL}/users/${userId}/playlists`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
+
+const addPlaylist = async (token: string) => {
+  const { data } = await axios.post(
+    `${API_URL}/users/${userId}/playlists`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  return data;
+};
+
+const getLikedSongsPlaylist = async (token: string) => {
   const res = await fetch(`${API_URL}/users/${userId}/playlists/love`, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -29,4 +51,6 @@ const getPlaylistDataById = async (token: string, playlistId: string) => {
 export const PlaylistService = {
   getLikedSongsPlaylist,
   getPlaylistDataById,
+  getUserPlaylists,
+  addPlaylist,
 };
