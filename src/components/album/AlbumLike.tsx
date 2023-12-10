@@ -29,7 +29,7 @@ export const AlbumLike = ({ albumId }: Props) => {
         toast.dismiss();
         await likeAlbum(token, albumId);
         setIsLiked(true);
-        await queryClient.invalidateQueries({ queryKey: "likedAlbums" });
+        await queryClient.invalidateQueries({ queryKey: "likedData" });
         toast("Añadido a tu biblioteca");
       } catch (error) {
         console.error(error);
@@ -39,7 +39,7 @@ export const AlbumLike = ({ albumId }: Props) => {
         toast.dismiss();
         await dislikeAlbum(token, albumId);
         setIsLiked(false);
-        await queryClient.invalidateQueries({ queryKey: "likedAlbums" });
+        await queryClient.invalidateQueries({ queryKey: "likedData" });
         toast("Se ha quitado de tu biblioteca");
       } catch (error) {
         console.error(error);
