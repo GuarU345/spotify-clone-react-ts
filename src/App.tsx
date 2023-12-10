@@ -8,6 +8,7 @@ import { useAuthStore } from "./store/useAuthStore";
 import { ProtectedRoutes } from "./components/ProtectedRoutes";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Toaster } from "sonner";
+import { Search } from "./components/Search";
 
 function App() {
   const { isLogin } = useAuthStore();
@@ -22,6 +23,7 @@ function App() {
               <Route path="/home" element={<Main />} />
               <Route path="/album/:id" element={<AlbumPage />} />
               <Route path="/playlist/:id" element={<PlaylistPage />} />
+              <Route path="/search" element={<Search />} />
             </Route>
             <Route path="/signin" element={<Auth isLogin={isLogin} />} />
           </Routes>

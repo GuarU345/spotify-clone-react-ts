@@ -1,6 +1,15 @@
 import axios from "axios";
 import { API_URL, userId } from "../utils/helpers";
 
+const search = async (token: string, name: string) => {
+  const { data } = await axios.get(`${API_URL}/search?name=${name}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
+
 const getSongsByAlbumId = async (token: string | null, albumId: number) => {
   const { data } = await axios.get(`${API_URL}/albums/${albumId}/songs`, {
     headers: {
@@ -37,4 +46,5 @@ export const SongService = {
   getSongsByAlbumId,
   getUserLikedSongsByAlbum,
   getLikedSongs,
+  search,
 };

@@ -11,7 +11,7 @@ const AsideMenu = () => {
             <HomeIcon />
             Inicio
           </SideMenuItem>
-          <SideMenuItem href="/#">
+          <SideMenuItem href="/search">
             <SearchIcon />
             Buscar
           </SideMenuItem>

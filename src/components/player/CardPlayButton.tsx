@@ -9,7 +9,6 @@ type Props = {
 };
 
 export const CardPlayButton = ({ id }: Props) => {
-  // const [selectedAlbum] = useState(id);
   const {
     currentMusic,
     isPlaying,
@@ -17,6 +16,7 @@ export const CardPlayButton = ({ id }: Props) => {
     setCurrentMusic,
     setCurrentSong,
     playMusic,
+    sound,
   } = usePlayerStore();
   const { token } = useAuthStore();
   const isPlayingAlbum = isPlaying && currentMusic?.album.id === id;
@@ -24,11 +24,17 @@ export const CardPlayButton = ({ id }: Props) => {
   const handleClick = async () => {
     if (isPlayingAlbum) {
       setIsPlaying(false);
+      sound.pause();
       return;
     }
 
     const data = await SongService.getSongsByAlbumId(token, Number(id));
     const { songs, id: albumId, image, artist, name } = data;
+    if (sound && currentMusic?.album.id === id) {
+      setIsPlaying(true);
+      sound.play();
+      return;
+    }
     setIsPlaying(true);
     setCurrentMusic({
       songs,
