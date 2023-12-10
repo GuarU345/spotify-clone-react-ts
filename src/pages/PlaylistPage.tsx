@@ -8,9 +8,16 @@ import { useEffect } from "react";
 export const PlaylistPage = () => {
   const { id } = useParams();
   const { token } = useAuthStore();
-  const { data: playlist, error, isLoading } = useFetchPlaylistData(token, id!);
+  const {
+    data: playlist,
+    error,
+    isLoading,
+    refetch,
+  } = useFetchPlaylistData(token, id!);
 
-  useEffect(() => {}, [id]);
+  useEffect(() => {
+    refetch();
+  }, [id]);
   return (
     <Layout>
       {isLoading && (
