@@ -10,7 +10,10 @@ export const UserPanel = () => {
     navigate("/signin");
   };
   return (
-    <button onClick={handleLogout} className="text-gray-400">
+    <button
+      onClick={handleLogout}
+      className="text-black w-24 text-sm font-bold bg-white p-2 rounded-3xl"
+    >
       Logout
     </button>
   );
