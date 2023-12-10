@@ -32,18 +32,21 @@ export const Player = () => {
       <div className="flex flex-col gap-2 items-center">
         <section className="flex gap-4 items-center">
           <button
-            onClick={handlePreviousSong}
+            onClick={sound && handlePreviousSong}
             className="text-3xl text-gray-400"
           >
             <MdSkipPrevious />
           </button>
           <button
-            onClick={handlePlay}
+            onClick={sound && handlePlay}
             className="rounded-full p-1 bg-white text-2xl text-black hover:scale-105"
           >
             {isPlaying ? <BsPauseFill /> : <BsPlayFill />}
           </button>
-          <button onClick={handleNextSong} className="text-3xl text-gray-400">
+          <button
+            onClick={sound && handleNextSong}
+            className="text-3xl text-gray-400"
+          >
             <MdSkipNext />
           </button>
         </section>
