@@ -71,7 +71,7 @@ export const LikedSongItem = ({ likedSong, index }: Props) => {
           title="Eliminar de Tu biblioteca"
           className="text-green-500 text-base hover:cursor-pointer"
         >
-          <SongLike liked={true} songId={likedSong.song.id} />
+          <SongLike liked={likedSong.liked} songId={likedSong.song.id} />
         </p>
       </td>
       <td className="px-4 py-2">{likedSong.song.duration}</td>

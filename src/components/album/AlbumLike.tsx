@@ -22,7 +22,7 @@ export const AlbumLike = ({ albumId }: Props) => {
 
   useEffect(() => {
     isLikedAlbum();
-  }, []);
+  }, [albumId]);
   const handleLikeAlbum = async () => {
     if (isLiked === false) {
       try {

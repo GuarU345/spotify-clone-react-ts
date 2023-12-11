@@ -10,7 +10,6 @@ export const PlaylistPage = () => {
   const { token } = useAuthStore();
   const {
     data: playlist,
-    error,
     isLoading,
     refetch,
   } = useFetchPlaylistData(token, id!);

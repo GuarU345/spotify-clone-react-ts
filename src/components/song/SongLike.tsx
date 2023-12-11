@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const SongLike = ({ liked, songId }: Props) => {
-  const [isLiked, setIsLiked] = useState(liked);
+  const [isLiked, setIsLiked] = useState<boolean>(liked);
   const { token } = useAuthStore();
   const queryClient = useQueryClient();
   const handleLike = async () => {

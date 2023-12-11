@@ -19,7 +19,7 @@ const getSongsByAlbumId = async (token: string | null, albumId: number) => {
   return data;
 };
 
-export const getUserLikedSongsByAlbum = async (
+export const getLikedSongsByUserId = async (
   token: string | null,
   songIds: unknown
 ) => {
@@ -34,17 +34,8 @@ export const getUserLikedSongsByAlbum = async (
   return data;
 };
 
-const getLikedSongs = async (token: string | null) => {
-  const resp = await fetch(`http://localhost:3000/api/users/${userId}/songs`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  const likedSongs = await resp.json();
-  return likedSongs;
-};
-
 export const SongService = {
   getSongsByAlbumId,
-  getUserLikedSongsByAlbum,
-  getLikedSongs,
+  getLikedSongsByUserId,
   search,
 };

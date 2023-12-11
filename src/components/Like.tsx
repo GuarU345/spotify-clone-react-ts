@@ -9,7 +9,7 @@ export const Like = ({ fn, liked }: Props) => {
   return (
     <button
       onClick={fn}
-      className={`${liked ? "text-green-500" : "d-none"} text-xl`}
+      className={`${liked ? "text-green-500" : "text-white"} text-xl`}
     >
       {liked ? <BsHeartFill /> : <BsHeart />}
     </button>

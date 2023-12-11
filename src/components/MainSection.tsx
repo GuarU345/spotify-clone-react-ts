@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { AlbumCard } from "./album/AlbumCard";
 import { AlbumsService } from "../services/albums";
 import { Album } from "../types/album";
-import { PlaylistCard } from "./playlist/PlaylistCard";
 import { useAuthStore } from "../store/useAuthStore";
 import { UserPanel } from "./user/UserPanel";
 
@@ -26,7 +25,6 @@ export const MainSection = () => {
             <UserPanel />
           </div>
           <p className="text-2xl">Buenos Dias</p>
-          <PlaylistCard />
         </div>
         <div className="flex flex-wrap mt-6 gap-4">
           {albums.length > 0

@@ -14,6 +14,7 @@ export interface SongLiked {
     name: string;
     image: string;
   };
+  liked: boolean;
 }
 
 export interface LikedSongs extends Song {
