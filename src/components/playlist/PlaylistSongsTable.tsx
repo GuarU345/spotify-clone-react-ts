@@ -11,6 +11,7 @@ export const PlaylistSongsTable = ({ songs }) => {
   const { userData } = useAuthStore();
 
   const getUserLikedSongs = async () => {
+    if (!songs) return;
     const songsData = songs.map((song) => song.song);
     const likeds = await SongService.getLikedSongsByUserId(
       userData.token,
@@ -28,9 +29,7 @@ export const PlaylistSongsTable = ({ songs }) => {
   };
 
   useEffect(() => {
-    if (songs) {
-      getUserLikedSongs();
-    }
+    getUserLikedSongs();
   }, [songs]);
 
   return (

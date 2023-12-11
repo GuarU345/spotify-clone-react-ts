@@ -12,12 +12,15 @@ type Props = {
 };
 
 export const LikedSongItem = ({ likedSong, index }: Props) => {
-  const { token } = useAuthStore();
+  const { userData } = useAuthStore();
   const { setIsPlaying, setCurrentMusic, setCurrentSong, playMusic } =
     usePlayerStore();
 
   const handlePlaySong = async () => {
-    const data = await SongService.getSongsByAlbumId(token, likedSong.album.id);
+    const data = await SongService.getSongsByAlbumId(
+      userData.token,
+      likedSong.album.id
+    );
     const { songs, id, image, artist, name } = data;
     setIsPlaying(true);
     setCurrentMusic({

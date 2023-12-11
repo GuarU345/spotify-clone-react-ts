@@ -31,7 +31,9 @@ export const AlbumSongsTable = ({ songs, artist }: Props) => {
   };
 
   useEffect(() => {
-    getUserLikedSongs();
+    if (songs) {
+      getUserLikedSongs();
+    }
   }, [songs]);
   return (
     <table className="table-auto min-w-full text-left divide-y divide-gray-100/50">

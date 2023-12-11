@@ -1,11 +1,10 @@
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import { usePlayerStore } from "../../store/usePlayerStore";
-import { useState } from "react";
 import { SongService } from "../../services/songs";
 import { useAuthStore } from "../../store/useAuthStore";
 
 type Props = {
-  id: number;
+  id: string;
 };
 
 export const CardPlayButton = ({ id }: Props) => {

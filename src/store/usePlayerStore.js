@@ -25,18 +25,23 @@ export const usePlayerStore = create((set, get) => ({
   setCurrentSong: (currentSong) => set({ currentSong }),
   setProgress: (progress) => set({ progress }),
   playMusic: async () => {
-    const { currentMusic, currentSong, volume, setProgress, sound } = get();
+    const { currentMusic, currentSong, volume, setProgress } = get();
     const { songs } = currentMusic;
     const findSong = songs[currentSong];
     let { track } = STREAMSONGS.find(
       (streamsong) => streamsong.name === findSong.name
     );
-
     const newSound = new Howl({
       src: [track],
       volume,
       onseeked: () => {
         setProgress(newSound.seek());
+      },
+      onloaderror: (error) => {
+        console.error("Error durante la carga:", error);
+      },
+      onplayerror: (error) => {
+        console.error("Error durante la reproducción:", error);
       },
     });
 

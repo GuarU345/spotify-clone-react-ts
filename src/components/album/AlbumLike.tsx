@@ -7,7 +7,7 @@ import { useQueryClient } from "react-query";
 import { toast } from "sonner";
 
 type Props = {
-  albumId: number;
+  albumId: string;
 };
 
 export const AlbumLike = ({ albumId }: Props) => {
@@ -24,9 +24,6 @@ export const AlbumLike = ({ albumId }: Props) => {
     setIsLiked(liked);
   };
 
-  useEffect(() => {
-    isLikedAlbum();
-  }, [albumId]);
   const handleLikeAlbum = async () => {
     if (isLiked === false) {
       try {
@@ -50,5 +47,9 @@ export const AlbumLike = ({ albumId }: Props) => {
       }
     }
   };
+
+  useEffect(() => {
+    isLikedAlbum();
+  }, [albumId]);
   return <Like fn={handleLikeAlbum} liked={isLiked!} />;
 };

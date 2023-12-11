@@ -37,7 +37,7 @@ export const dislikeSong = async (
 export const likeAlbum = async (
   token: string | null,
   userId: string,
-  albumId: number
+  albumId: string
 ) => {
   const { data } = await axios.post(
     `${API_URL}/users/${userId}/albums/${albumId}/likes`,
@@ -54,7 +54,7 @@ export const likeAlbum = async (
 export const dislikeAlbum = async (
   token: string | null,
   userId: string,
-  albumId: number
+  albumId: string
 ) => {
   const { data } = await axios.delete(
     `${API_URL}/users/${userId}/albums/${albumId}/likes`,

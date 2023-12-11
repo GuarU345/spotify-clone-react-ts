@@ -75,8 +75,8 @@ export const AlbumPage = () => {
         </header>
 
         <div className="mt-10 px-6 flex gap-10 items-center">
-          <CardPlayButton id={album?.id} />
-          <AlbumLike albumId={album?.id} />
+          <CardPlayButton id={id!} />
+          <AlbumLike albumId={id!} />
         </div>
 
         <div className="relative z-10 px-6 pt-10"></div>

@@ -30,7 +30,7 @@ const getAlbumDataById = async (token: string | null, albumId: string) => {
 const checkUserLikesAlbum = async (
   token: string | null,
   userId: string,
-  albumId: number
+  albumId: string
 ) => {
   const { data } = await axios.get(
     `${API_URL}/users/${userId}/albums/${albumId}`,

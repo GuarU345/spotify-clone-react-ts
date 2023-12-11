@@ -56,7 +56,7 @@ export const PlaylistPage = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 -z-[1]"></div>
 
         <section className="p-6">
-          <PlaylistSongsTable songs={playlist?.songs} />
+          <PlaylistSongsTable songs={playlist?.songs ? playlist?.songs : []} />
         </section>
       </div>
     </Layout>
