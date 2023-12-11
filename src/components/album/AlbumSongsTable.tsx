@@ -15,7 +15,7 @@ export const AlbumSongsTable = ({ songs, artist }: Props) => {
   const { token } = useAuthStore();
 
   const getUserLikedSongs = async () => {
-    const likeds = await SongService.getUserLikedSongsByAlbum(token, songs);
+    const likeds = await SongService.getLikedSongsByUserId(token, songs);
     const likedSongs = songs.map((song) => {
       const isLiked = likeds.includes(song.id);
       return {
