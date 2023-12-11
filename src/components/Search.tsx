@@ -14,7 +14,7 @@ interface Searched {
 
 export const Search = () => {
   const [results, setResults] = useState<Searched | null>(null);
-  const { token } = useAuthStore();
+  const { userData } = useAuthStore();
   const searchSomething = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { elements } = event.currentTarget;
@@ -24,7 +24,7 @@ export const Search = () => {
       setResults(null);
       return;
     }
-    const result = await SongService.search(token, search);
+    const result = await SongService.search(userData.token, search);
     setResults(result);
   };
 

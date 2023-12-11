@@ -1,7 +1,7 @@
 import axios from "axios";
-import { API_URL, userId } from "../utils/helpers";
+import { API_URL } from "../utils/helpers";
 
-const getLikedAlbums = async (token: string | null) => {
+const getLikedAlbums = async (token: string | null, userId: string) => {
   const { data } = await axios.get(`${API_URL}/users/${userId}/albums`, {
     headers: { Authorization: `Bearer ${token}` },
   });
@@ -27,14 +27,20 @@ const getAlbumDataById = async (token: string | null, albumId: string) => {
   };
 };
 
-const checkUserLikesAlbum = async (token: string | null, albumId: number) => {
-  const res = await fetch(`${API_URL}/users/${userId}/albums/${albumId}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  const isLikedAlbum = await res.json();
-  return isLikedAlbum;
+const checkUserLikesAlbum = async (
+  token: string | null,
+  userId: string,
+  albumId: number
+) => {
+  const { data } = await axios.get(
+    `${API_URL}/users/${userId}/albums/${albumId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  return data;
 };
 
 export const AlbumsService = {

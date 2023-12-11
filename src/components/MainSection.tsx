@@ -7,10 +7,10 @@ import { UserPanel } from "./user/UserPanel";
 
 export const MainSection = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
-  const { token } = useAuthStore();
+  const { userData } = useAuthStore();
 
   const getAlbums = async () => {
-    const data = await AlbumsService.getAlbums(token);
+    const data = await AlbumsService.getAlbums(userData.token);
     setAlbums(data);
   };
 

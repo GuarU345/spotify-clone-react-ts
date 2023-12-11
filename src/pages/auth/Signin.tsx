@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 export const Signin = () => {
-  const { setIsLogin, setToken } = useAuthStore();
+  const { setIsLogin, setUserData } = useAuthStore();
   const navigate = useNavigate();
   const login = async (body) => {
     try {
-      const token = await AuthService.signin(body);
+      const { token, user_id } = await AuthService.signin(body);
       setIsLogin(true);
-      setToken(token);
+      setUserData({ token, user_id });
       navigate("/home");
       toast.success("Sesión iniciada");
     } catch (error) {

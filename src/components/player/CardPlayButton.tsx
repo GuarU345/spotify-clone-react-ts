@@ -18,7 +18,7 @@ export const CardPlayButton = ({ id }: Props) => {
     playMusic,
     sound,
   } = usePlayerStore();
-  const { token } = useAuthStore();
+  const { userData } = useAuthStore();
   const isPlayingAlbum = isPlaying && currentMusic?.album.id === id;
 
   const handleClick = async () => {
@@ -28,7 +28,10 @@ export const CardPlayButton = ({ id }: Props) => {
       return;
     }
 
-    const data = await SongService.getSongsByAlbumId(token, Number(id));
+    const data = await SongService.getSongsByAlbumId(
+      userData.token,
+      Number(id)
+    );
     const { songs, id: albumId, image, artist, name } = data;
     if (sound && currentMusic?.album.id === id) {
       setIsPlaying(true);

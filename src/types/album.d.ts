@@ -1,4 +1,5 @@
 import { Artist } from "./artist";
+import { Song } from "./song";
 
 export interface Album {
   id: number;
@@ -24,7 +25,7 @@ export interface AlbumData {
   name: string;
   image: string;
   color: string;
-  songs: [{ id: number; name: string; duration: string }];
+  songs: Song[];
   type: string;
 }
 

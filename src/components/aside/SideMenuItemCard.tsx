@@ -3,8 +3,11 @@ import { useAuthStore } from "../../store/useAuthStore";
 import { Link } from "react-router-dom";
 
 export const SideMenuItemCard = () => {
-  const { token } = useAuthStore();
-  const { data, error, isLoading } = useFetchLikedData(token);
+  const { userData } = useAuthStore();
+  const { data, isLoading } = useFetchLikedData(
+    userData.token,
+    userData.user_id
+  );
 
   return (
     <>

@@ -5,12 +5,12 @@ import { toast } from "sonner";
 import { useQueryClient } from "react-query";
 
 export const AddPlaylist = () => {
-  const { token } = useAuthStore();
+  const { userData } = useAuthStore();
   const queryClient = useQueryClient();
 
   const handleAddPlaylist = async () => {
     try {
-      await PlaylistService.addPlaylist(token);
+      await PlaylistService.addPlaylist(userData.token, userData.user_id);
       toast("Añadida a tu biblioteca");
       queryClient.invalidateQueries({ queryKey: "likedData" });
     } catch (error) {

@@ -1,7 +1,11 @@
 import axios from "axios";
-import { API_URL, token, userId } from "../utils/helpers";
+import { API_URL } from "../utils/helpers";
 
-export const likeSong = async (token: string | null, songId: number) => {
+export const likeSong = async (
+  token: string | null,
+  userId: string,
+  songId: number
+) => {
   const { data } = await axios.post(
     `${API_URL}/users/${userId}/songs/${songId}/likes`,
     {},
@@ -14,7 +18,11 @@ export const likeSong = async (token: string | null, songId: number) => {
   return data;
 };
 
-export const dislikeSong = async (token: string | null, songId: number) => {
+export const dislikeSong = async (
+  token: string | null,
+  userId: string,
+  songId: number
+) => {
   const { data } = await axios.delete(
     `${API_URL}/users/${userId}/songs/${songId}/likes`,
     {
@@ -26,7 +34,11 @@ export const dislikeSong = async (token: string | null, songId: number) => {
   return data;
 };
 
-export const likeAlbum = async (token: string | null, albumId: number) => {
+export const likeAlbum = async (
+  token: string | null,
+  userId: string,
+  albumId: number
+) => {
   const { data } = await axios.post(
     `${API_URL}/users/${userId}/albums/${albumId}/likes`,
     {},
@@ -39,7 +51,11 @@ export const likeAlbum = async (token: string | null, albumId: number) => {
   return data;
 };
 
-export const dislikeAlbum = async (token: string | null, albumId: number) => {
+export const dislikeAlbum = async (
+  token: string | null,
+  userId: string,
+  albumId: number
+) => {
   const { data } = await axios.delete(
     `${API_URL}/users/${userId}/albums/${albumId}/likes`,
     {

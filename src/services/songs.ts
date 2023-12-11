@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL, userId } from "../utils/helpers";
+import { API_URL } from "../utils/helpers";
 
 const search = async (token: string, name: string) => {
   const { data } = await axios.get(`${API_URL}/search?name=${name}`, {
@@ -21,6 +21,7 @@ const getSongsByAlbumId = async (token: string | null, albumId: number) => {
 
 export const getLikedSongsByUserId = async (
   token: string | null,
+  userId: string,
   songIds: unknown
 ) => {
   const body = {

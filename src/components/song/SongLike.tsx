@@ -12,13 +12,13 @@ type Props = {
 
 export const SongLike = ({ liked, songId }: Props) => {
   const [isLiked, setIsLiked] = useState<boolean>(liked);
-  const { token } = useAuthStore();
+  const { userData } = useAuthStore();
   const queryClient = useQueryClient();
   const handleLike = async () => {
     if (liked === false) {
       try {
         toast.dismiss();
-        await likeSong(token, songId);
+        await likeSong(userData.token, userData.user_id, songId);
         setIsLiked(true);
         await queryClient.invalidateQueries({ queryKey: "playlistData" });
         toast("Añadida a canciones que te gustan");
@@ -28,7 +28,7 @@ export const SongLike = ({ liked, songId }: Props) => {
     } else {
       try {
         toast.dismiss();
-        await dislikeSong(token, songId);
+        await dislikeSong(userData.token, userData.user_id, songId);
         setIsLiked(false);
         await queryClient.invalidateQueries({ queryKey: "playlistData" });
         toast("Quitada de las canciones que te gustan");

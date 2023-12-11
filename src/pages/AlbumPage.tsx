@@ -10,9 +10,13 @@ import { useFetchAlbumData } from "../hooks/useFetchAlbums";
 export const AlbumPage = () => {
   const [numberSongs, setNumberSongs] = useState(0);
   const { id } = useParams();
-  const { token } = useAuthStore();
+  const { userData } = useAuthStore();
 
-  const { data: album, isLoading, refetch } = useFetchAlbumData(token, id!);
+  const {
+    data: album,
+    isLoading,
+    refetch,
+  } = useFetchAlbumData(userData.token, id!);
 
   const countSongs = () => {
     setNumberSongs(album?.songs.length);

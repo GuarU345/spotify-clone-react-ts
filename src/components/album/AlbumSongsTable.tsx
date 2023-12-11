@@ -12,10 +12,14 @@ type Props = {
 
 export const AlbumSongsTable = ({ songs, artist }: Props) => {
   const [newSongs, setNewSongs] = useState<LikedSongs[]>([]);
-  const { token } = useAuthStore();
+  const { userData } = useAuthStore();
 
   const getUserLikedSongs = async () => {
-    const likeds = await SongService.getLikedSongsByUserId(token, songs);
+    const likeds = await SongService.getLikedSongsByUserId(
+      userData.token,
+      userData.user_id,
+      songs
+    );
     const likedSongs = songs.map((song) => {
       const isLiked = likeds.includes(song.id);
       return {

@@ -8,11 +8,15 @@ import { useAuthStore } from "../../store/useAuthStore";
 
 export const PlaylistSongsTable = ({ songs }) => {
   const [newSongs, setNewSongs] = useState<SongLiked[]>([]);
-  const { token } = useAuthStore();
+  const { userData } = useAuthStore();
 
   const getUserLikedSongs = async () => {
     const songsData = songs.map((song) => song.song);
-    const likeds = await SongService.getLikedSongsByUserId(token, songsData);
+    const likeds = await SongService.getLikedSongsByUserId(
+      userData.token,
+      userData.user_id,
+      songsData
+    );
     const likedSongs = songs.map((song) => {
       const isLiked = likeds.includes(song.song.id);
       return {
