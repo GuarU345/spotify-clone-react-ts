@@ -6,17 +6,17 @@ import { useFetchPlaylistData } from "../hooks/useFetchPlaylists";
 import { useEffect } from "react";
 
 export const PlaylistPage = () => {
-  const { id } = useParams();
+  const { playlistId } = useParams();
   const { userData } = useAuthStore();
   const {
     data: playlist,
     isLoading,
     refetch,
-  } = useFetchPlaylistData(userData.token, id!);
+  } = useFetchPlaylistData(userData.token, playlistId!);
 
   useEffect(() => {
     refetch();
-  }, [id]);
+  }, [playlistId]);
   return (
     <Layout>
       {isLoading && (

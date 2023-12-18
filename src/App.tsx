@@ -21,8 +21,8 @@ function App() {
             <Route path="/" element={<Navigate to="/signin" />} />
             <Route element={<ProtectedRoutes isAllowed={isLogin} />}>
               <Route path="/home" element={<Main />} />
-              <Route path="/album/:id" element={<AlbumPage />} />
-              <Route path="/playlist/:id" element={<PlaylistPage />} />
+              <Route path="/album/:albumId" element={<AlbumPage />} />
+              <Route path="/playlist/:playlistId" element={<PlaylistPage />} />
               <Route path="/search" element={<Search />} />
             </Route>
             <Route path="/signin" element={<Auth isLogin={isLogin} />} />

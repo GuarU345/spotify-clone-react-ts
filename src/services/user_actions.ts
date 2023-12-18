@@ -66,3 +66,16 @@ export const dislikeAlbum = async (
   );
   return data;
 };
+
+export const userReproducingSomething = async (
+  token: string,
+  id: string,
+  type: string
+) => {
+  const { data } = await axios.get(`${API_URL}/data/${id}?type=${type}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};

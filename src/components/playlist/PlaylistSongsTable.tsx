@@ -1,13 +1,16 @@
-import { BsPlayFill } from "react-icons/bs";
 import { IoTimeOutline } from "react-icons/io5";
 import { LikedSongItem } from "../song/LikedSongItem";
 import { useEffect, useState } from "react";
 import { SongLiked } from "../../types/song";
 import { SongService } from "../../services/songs";
 import { useAuthStore } from "../../store/useAuthStore";
+import { CardPlayButton } from "../player/CardPlayButton";
+import { useParams } from "react-router-dom";
+import { MUSIC_TYPES } from "../../utils/helpers";
 
 export const PlaylistSongsTable = ({ songs }) => {
   const [newSongs, setNewSongs] = useState<SongLiked[]>([]);
+  const { playlistId } = useParams();
   const { userData } = useAuthStore();
 
   const getUserLikedSongs = async () => {
@@ -35,9 +38,7 @@ export const PlaylistSongsTable = ({ songs }) => {
   return (
     <div className="flex flex-col gap-4">
       <div className="rounded-full w-[50px] h-[50px] bg-green-500 grid place-content-center hover:scale-105">
-        <p className="text-black text-2xl">
-          <BsPlayFill />
-        </p>
+        <CardPlayButton id={playlistId!} type={MUSIC_TYPES.PLAYLIST} />
       </div>
       <table className="min-w-full table-auto text-left divide-y divide-gray-100/50">
         <thead>

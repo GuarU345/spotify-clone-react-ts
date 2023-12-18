@@ -2,9 +2,11 @@ import { BsPlayFill } from "react-icons/bs";
 import { Song, SongLiked } from "../../types/song";
 import { SongLike } from "./SongLike";
 import "../../styles/likedsong.css";
-import { SongService } from "../../services/songs";
 import { usePlayerStore } from "../../store/usePlayerStore";
 import { useAuthStore } from "../../store/useAuthStore";
+import { userReproducingSomething } from "../../services/user_actions";
+import { useParams } from "react-router-dom";
+import { MUSIC_TYPES } from "../../utils/helpers";
 
 type Props = {
   likedSong: SongLiked;
@@ -13,24 +15,23 @@ type Props = {
 
 export const LikedSongItem = ({ likedSong, index }: Props) => {
   const { userData } = useAuthStore();
+  const { playlistId } = useParams();
   const { setIsPlaying, setCurrentMusic, setCurrentSong, playMusic } =
     usePlayerStore();
 
   const handlePlaySong = async () => {
-    const data = await SongService.getSongsByAlbumId(
+    const data = await userReproducingSomething(
       userData.token,
-      likedSong.album.id
+      playlistId!,
+      MUSIC_TYPES.PLAYLIST
     );
-    const { songs, id, image, artist, name } = data;
+    const { id, type, songs } = data;
     setIsPlaying(true);
     setCurrentMusic({
+      data: id,
+      songId: likedSong.song.id,
+      type,
       songs,
-      album: {
-        id,
-        name,
-        image,
-        artist,
-      },
     });
     const songIndex = songs.findIndex(
       (song: Song) => song.id === likedSong.song.id

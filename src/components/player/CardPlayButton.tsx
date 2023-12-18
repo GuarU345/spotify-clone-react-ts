@@ -1,13 +1,14 @@
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import { usePlayerStore } from "../../store/usePlayerStore";
-import { SongService } from "../../services/songs";
 import { useAuthStore } from "../../store/useAuthStore";
+import { userReproducingSomething } from "../../services/user_actions";
 
 type Props = {
   id: string;
+  type: string;
 };
 
-export const CardPlayButton = ({ id }: Props) => {
+export const CardPlayButton = ({ id, type }: Props) => {
   const {
     currentMusic,
     isPlaying,
@@ -18,7 +19,7 @@ export const CardPlayButton = ({ id }: Props) => {
     sound,
   } = usePlayerStore();
   const { userData } = useAuthStore();
-  const isPlayingAlbum = isPlaying && currentMusic?.album.id === id;
+  const isPlayingAlbum = isPlaying && currentMusic?.id === id;
 
   const handleClick = async () => {
     if (isPlayingAlbum) {
@@ -27,25 +28,13 @@ export const CardPlayButton = ({ id }: Props) => {
       return;
     }
 
-    const data = await SongService.getSongsByAlbumId(
-      userData.token,
-      Number(id)
-    );
-    const { songs, id: albumId, image, artist, name } = data;
-    if (sound && currentMusic?.album.id === id) {
-      setIsPlaying(true);
-      sound.play();
-      return;
-    }
+    const data = await userReproducingSomething(userData.token, id, type);
     setIsPlaying(true);
     setCurrentMusic({
-      songs,
-      album: {
-        id: albumId,
-        name,
-        image,
-        artist,
-      },
+      id: data.id,
+      type: data.type,
+      songId: data.songId,
+      songs: data.songs,
     });
     setCurrentSong(0);
     playMusic();

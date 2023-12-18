@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Album } from "../../types/album";
 import { CardPlayButton } from "../player/CardPlayButton";
+import { MUSIC_TYPES } from "../../utils/helpers";
 
 type Props = {
   album: Album;
@@ -16,7 +17,7 @@ export const AlbumCard = ({ album }: Props) => {
           z-10
         `}
       >
-        <CardPlayButton id={album.id} />
+        <CardPlayButton id={album.id.toString()} type={MUSIC_TYPES.ALBUM} />
       </div>
       <Link
         className="transition-all duration-300 w-44 flex flex-col relative p-2 overflow-hidden gap-2 pb-6 rounded-md"

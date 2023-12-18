@@ -6,17 +6,18 @@ import { CardPlayButton } from "../components/player/CardPlayButton";
 import { AlbumLike } from "../components/album/AlbumLike";
 import { useAuthStore } from "../store/useAuthStore";
 import { useFetchAlbumData } from "../hooks/useFetchAlbums";
+import { MUSIC_TYPES } from "../utils/helpers";
 
 export const AlbumPage = () => {
   const [numberSongs, setNumberSongs] = useState(0);
-  const { id } = useParams();
+  const { albumId } = useParams();
   const { userData } = useAuthStore();
 
   const {
     data: album,
     isLoading,
     refetch,
-  } = useFetchAlbumData(userData.token, id!);
+  } = useFetchAlbumData(userData.token, albumId!);
 
   const countSongs = () => {
     setNumberSongs(album?.songs.length);
@@ -25,7 +26,7 @@ export const AlbumPage = () => {
   useEffect(() => {
     countSongs();
     refetch();
-  }, [id]);
+  }, [albumId]);
   return (
     <Layout>
       {isLoading && (
@@ -75,8 +76,8 @@ export const AlbumPage = () => {
         </header>
 
         <div className="mt-10 px-6 flex gap-10 items-center">
-          <CardPlayButton id={id!} />
-          <AlbumLike albumId={id!} />
+          <CardPlayButton id={albumId!} type={MUSIC_TYPES.ALBUM} />
+          <AlbumLike albumId={albumId!} />
         </div>
 
         <div className="relative z-10 px-6 pt-10"></div>

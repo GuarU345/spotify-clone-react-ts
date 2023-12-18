@@ -8,12 +8,15 @@ export const usePlayerStore = create((set, get) => ({
   volume: 0.1,
   duration: "0:00",
   progress: "0:00",
-  currentMusic: { album: null, songs: [] },
+  currentMusic: { id: null, songId: null, type: null, songs: null },
   currentSong: 0,
   setIsPlaying: (isPlaying) => set({ isPlaying }),
   setVolume: (volume) => set({ volume }),
   setCurrentMusic: (currentMusic) => {
-    if (currentMusic.album !== get().currentMusic.album) {
+    if (
+      currentMusic.id !== get().currentMusic.id ||
+      currentMusic.songId !== get().currentMusic.songId
+    ) {
       const { sound } = get();
       if (sound) {
         sound.stop();
