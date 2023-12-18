@@ -67,7 +67,7 @@ export const AlbumPage = () => {
                 <p className="mt-1">
                   <span className="text-white">
                     {numberSongs}
-                    {numberSongs > 1 ? "canciones" : "cancion"}
+                    {numberSongs > 1 ? " canciones" : " cancion"}
                   </span>
                 </p>
               </div>

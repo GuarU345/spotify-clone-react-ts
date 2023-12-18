@@ -37,12 +37,7 @@ export const SongControl = () => {
         cancelAnimationFrame(updateProgress);
       });
     }
-
-    // return () => {
-    //   sound.unload();
-    //   cancelAnimationFrame(updateProgress);
-    // };
-  }, [sound, setProgress]);
+  }, [sound]);
   return (
     <div className="flex gap-4">
       <span className="text-gray-400">{formatTime(progress)}</span>
