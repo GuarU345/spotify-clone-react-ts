@@ -1,5 +1,5 @@
 import { IoTimeOutline } from "react-icons/io5";
-import { LikedSongItem } from "../song/LikedSongItem";
+import { PlaylistSongItem } from "./PlaylistSongItem";
 import { useEffect, useState } from "react";
 import { SongLiked } from "../../types/song";
 import { SongService } from "../../services/songs";
@@ -53,10 +53,10 @@ export const PlaylistSongsTable = ({ songs }) => {
           </tr>
         </thead>
         <tbody>
-          {newSongs?.map((likedSong, index: number) => (
-            <LikedSongItem
-              key={likedSong.song.id}
-              likedSong={likedSong}
+          {newSongs?.map((song, index: number) => (
+            <PlaylistSongItem
+              key={song.song.id}
+              likedSong={song}
               index={index}
             />
           ))}

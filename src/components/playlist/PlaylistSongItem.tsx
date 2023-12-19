@@ -1,6 +1,6 @@
 import { BsPlayFill } from "react-icons/bs";
 import { Song, SongLiked } from "../../types/song";
-import { SongLike } from "./SongLike";
+import { SongLike } from "../song/SongLike";
 import "../../styles/likedsong.css";
 import { usePlayerStore } from "../../store/usePlayerStore";
 import { useAuthStore } from "../../store/useAuthStore";
@@ -13,7 +13,7 @@ type Props = {
   index: number;
 };
 
-export const LikedSongItem = ({ likedSong, index }: Props) => {
+export const PlaylistSongItem = ({ likedSong, index }: Props) => {
   const { userData } = useAuthStore();
   const { playlistId } = useParams();
   const { setIsPlaying, setCurrentMusic, setCurrentSong, playMusic } =
