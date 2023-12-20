@@ -28,6 +28,12 @@ export const CardPlayButton = ({ id, type }: Props) => {
       return;
     }
 
+    if (sound && currentMusic?.id === id) {
+      setIsPlaying(true);
+      sound.play();
+      return;
+    }
+
     const data = await userReproducingSomething(userData.token, id, type);
     setIsPlaying(true);
     setCurrentMusic({

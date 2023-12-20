@@ -6,8 +6,8 @@ export const usePlayerStore = create((set, get) => ({
   sound: null,
   isPlaying: false,
   volume: 0.1,
-  duration: "0:00",
-  progress: "0:00",
+  duration: null,
+  progress: null,
   currentMusic: { id: null, songId: null, type: null, songs: null },
   currentSong: 0,
   setIsPlaying: (isPlaying) => set({ isPlaying }),
@@ -20,7 +20,7 @@ export const usePlayerStore = create((set, get) => ({
       const { sound } = get();
       if (sound) {
         sound.stop();
-        set({ duration: "0:00", progress: "0:00" });
+        set({ duration: null, progress: null });
       }
     }
     set({ currentMusic });
@@ -37,6 +37,7 @@ export const usePlayerStore = create((set, get) => ({
     const newSound = new Howl({
       src: [track],
       volume,
+      html5: true,
       onseeked: () => {
         setProgress(newSound.seek());
       },
@@ -62,8 +63,10 @@ export const usePlayerStore = create((set, get) => ({
     const nextSong = (currentSong + 1) % songs.length;
     set({ currentSong: nextSong });
     sound.stop();
-    set({ duration: "0:00", progress: "0:00" });
-    playMusic();
+    set({ duration: null, progress: null });
+    setTimeout(() => {
+      playMusic();
+    }, 800);
   },
   goPreviousSong: () => {
     const { currentMusic, currentSong, playMusic, sound } = get();
@@ -71,8 +74,10 @@ export const usePlayerStore = create((set, get) => ({
     const previousSong = (currentSong - 1 + songs.length) % songs.length;
     set({ currentSong: previousSong });
     sound.stop();
-    set({ duration: "0:00", progress: "0:00" });
-    playMusic();
+    set({ duration: null, progress: null });
+    setTimeout(() => {
+      playMusic();
+    }, 800);
   },
   changeVolume: (volume) => {
     const { sound } = get();
