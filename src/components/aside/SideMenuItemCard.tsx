@@ -29,7 +29,7 @@ export const SideMenuItemCard = () => {
             <li className="flex items-center  p-2 gap-2 hover:cursor-pointer hover:bg-white/5">
               <picture>
                 <img
-                  className="w-16 h-16 rounded-md"
+                  className="w-14 h-14 rounded-md"
                   src={likedData.image}
                   alt={likedData.name}
                 />

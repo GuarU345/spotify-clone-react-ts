@@ -7,6 +7,7 @@ import { useAuthStore } from "../../store/useAuthStore";
 import { CardPlayButton } from "../player/CardPlayButton";
 import { useParams } from "react-router-dom";
 import { MUSIC_TYPES } from "../../utils/helpers";
+import { MdMoreHoriz } from "react-icons/md";
 
 export const PlaylistSongsTable = ({ songs }) => {
   const [newSongs, setNewSongs] = useState<SongLiked[]>([]);
@@ -50,6 +51,7 @@ export const PlaylistSongsTable = ({ songs }) => {
             <th className="px-4 py-2">
               <IoTimeOutline />
             </th>
+            <th></th>
           </tr>
         </thead>
         <tbody>

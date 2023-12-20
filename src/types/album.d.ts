@@ -2,7 +2,7 @@ import { Artist } from "./artist";
 import { Song } from "./song";
 
 export interface Album {
-  id: number;
+  id: string;
   name: string;
   release_date: string;
   album_image: string;
@@ -13,14 +13,14 @@ export interface Album {
 }
 
 export interface LikedAlbums {
-  id: number;
+  id: string;
   name: string;
   image: string;
   artist: string;
 }
 
 export interface AlbumData {
-  id: number;
+  id: string;
   artist: string;
   name: string;
   image: string;

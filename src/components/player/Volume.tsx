@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { usePlayerStore } from "../../store/usePlayerStore";
-import { Slider } from "./Slider";
+import { Slider } from "../../../@/components/ui/slider";
 import {
   VolumeMax,
   VolumeMedium,
