@@ -19,9 +19,10 @@ export const SongControl = () => {
   };
 
   useEffect(() => {
+    let animationFrameId;
     const updateProgress = () => {
       setProgress(sound.seek());
-      requestAnimationFrame(updateProgress);
+      animationFrameId = requestAnimationFrame(updateProgress);
     };
 
     if (isPlaying) {
@@ -29,27 +30,29 @@ export const SongControl = () => {
     }
 
     if (!isPlaying) {
-      cancelAnimationFrame(updateProgress);
+      cancelAnimationFrame(animationFrameId);
     }
 
-    if (sound) {
-      sound.on("stop", () => {
-        cancelAnimationFrame(updateProgress);
-      });
-    }
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+
+      if (sound) {
+        sound.off("stop", updateProgress);
+      }
+    };
   }, [sound]);
+
   return (
     <div className="flex gap-4">
-      <span className="text-gray-400">{formatTime(progress)}</span>
+      <p className="text-gray-400">{formatTime(progress)}</p>
       <Slider
         className="w-[400px] cursor-pointer"
         value={[progress]}
         min={0}
-        max={[duration]}
-        type="range"
+        max={duration}
         onValueChange={(value) => handleSeek(value)}
       />
-      <span className="text-gray-400">{formatTime(duration)}</span>
+      <p className="text-gray-400">{formatTime(duration)}</p>
     </div>
   );
 };
