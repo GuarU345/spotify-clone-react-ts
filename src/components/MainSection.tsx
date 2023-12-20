@@ -32,7 +32,7 @@ export const MainSection = () => {
             : null}
         </div>
 
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 -z-[1]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-emerald-800 via-zinc-900/80 -z-[1]"></div>
       </main>
 
       <style></style>
