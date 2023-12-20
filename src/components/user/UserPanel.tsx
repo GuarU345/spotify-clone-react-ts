@@ -9,7 +9,9 @@ export const UserPanel = () => {
   const handleLogout = async () => {
     setIsLogin(false);
     setUserData({ token: null, user_id: null });
-    sound.stop();
+    if (sound) {
+      sound.stop();
+    }
     navigate("/signin");
   };
   return (
