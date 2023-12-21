@@ -13,6 +13,7 @@ export const AddPlaylist = () => {
       await PlaylistService.addPlaylist(userData.token, userData.user_id);
       toast("Añadida a tu biblioteca");
       queryClient.invalidateQueries({ queryKey: "likedData" });
+      queryClient.invalidateQueries({ queryKey: "userPlaylists" });
     } catch (error) {
       toast("No se pudo crear la playlist");
     }

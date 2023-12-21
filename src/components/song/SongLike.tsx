@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { useQueryClient } from "react-query";
 
 type Props = {
-  songId: number;
+  songId: string;
   liked: boolean;
 };
 

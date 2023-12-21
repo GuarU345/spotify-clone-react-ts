@@ -48,9 +48,27 @@ const getPlaylistDataById = async (token: string, playlistId: string) => {
   };
 };
 
+const addSongToPlaylist = async (
+  token: string,
+  playlistId: string,
+  songId: string
+) => {
+  const { data } = await axios.post(
+    `${API_URL}/playlists/${playlistId}/songs/${songId}`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  return data;
+};
+
 export const PlaylistService = {
   getLikedSongsPlaylist,
   getPlaylistDataById,
   getUserPlaylists,
   addPlaylist,
+  addSongToPlaylist,
 };

@@ -82,7 +82,7 @@ export const PlaylistSongItem = ({ likedSong, index }: Props) => {
         </td>
         <td className="px-4 py-2">{likedSong.song.duration}</td>
         <td>
-          <DropdownMenu />
+          <DropdownMenu songId={likedSong.song.id} />
         </td>
       </tr>
     </>
