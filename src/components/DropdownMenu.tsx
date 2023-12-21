@@ -21,6 +21,7 @@ export const DropdownMenu = ({ songId }: { songId: string }) => {
 
   const handleAddSongToPlaylist = (playlistId: string) => async () => {
     try {
+      toast.dismiss();
       await PlaylistService.addSongToPlaylist(
         userData.token,
         playlistId,
@@ -28,15 +29,14 @@ export const DropdownMenu = ({ songId }: { songId: string }) => {
       );
       toast.success("Cancion añadida a la playlist");
     } catch (error) {
+      toast.dismiss();
       toast.error("No se pudo agregar la cancion a la playlist");
     }
   };
   return (
     <Dropdown>
-      <DropdownMenuTrigger>
-        <button className="text-gray-400 hover:text-white text-2xl">
-          <BsPlus />
-        </button>
+      <DropdownMenuTrigger className="text-gray-400 hover:text-white text-2xl">
+        <BsPlus />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="flex flex-col gap-3 py-2 w-56 bg-zinc-800">
         <DropdownMenuLabel className="text-center">
@@ -50,10 +50,11 @@ export const DropdownMenu = ({ songId }: { songId: string }) => {
         )}
         {userPlaylists?.map((userPlaylist) => (
           <DropdownMenuItem
+            key={userPlaylist.id}
             onClick={handleAddSongToPlaylist(userPlaylist.id)}
             className="hover:bg-white/20 p-3 cursor-default"
           >
-            <p className="px-2 text-sm">{userPlaylist.name}</p>
+            <button className="px-2 text-sm">{userPlaylist.name}</button>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

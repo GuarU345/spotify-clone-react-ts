@@ -22,7 +22,7 @@ const AsideMenu = () => {
       <div className="bg-zinc-900 rounded-lg p-2 flex-1">
         <ul>
           <div className="flex gap-10 items-center">
-            <SideMenuItem href="/">
+            <SideMenuItem href="/home">
               <LibraryIcon />
               Tu biblioteca
             </SideMenuItem>
