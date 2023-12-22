@@ -11,6 +11,7 @@ import { useFetchUserPlaylists } from "../hooks/useFetchPlaylists";
 import { useAuthStore } from "../store/useAuthStore";
 import { PlaylistService } from "../services/playlists";
 import { toast } from "sonner";
+import { useHandleAddPlaylist } from "../hooks/useHandleAddPlaylist";
 
 export const DropdownMenu = ({ songId }: { songId: string }) => {
   const { userData } = useAuthStore();
@@ -18,6 +19,7 @@ export const DropdownMenu = ({ songId }: { songId: string }) => {
     userData.token,
     userData.user_id
   );
+  const { handleAddPlaylist } = useHandleAddPlaylist();
 
   const handleAddSongToPlaylist = (playlistId: string) => async () => {
     try {
@@ -33,6 +35,7 @@ export const DropdownMenu = ({ songId }: { songId: string }) => {
       toast.error("No se pudo agregar la cancion a la playlist");
     }
   };
+
   return (
     <Dropdown>
       <DropdownMenuTrigger className="text-gray-400 hover:text-white text-2xl">
@@ -48,6 +51,12 @@ export const DropdownMenu = ({ songId }: { songId: string }) => {
             <p>Loading...</p>
           </>
         )}
+        <DropdownMenuItem
+          onClick={handleAddPlaylist}
+          className="hover:bg-white/20 p-3 cursor-default"
+        >
+          <BsPlus className="text-gray-400" size={25} /> Crear lista
+        </DropdownMenuItem>
         {userPlaylists?.map((userPlaylist) => (
           <DropdownMenuItem
             key={userPlaylist.id}
