@@ -1,0 +1,87 @@
+import { Modal } from "birdies";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { PlaylistService } from "../services/playlists";
+import { useParams } from "react-router-dom";
+import { useAuthStore } from "../store/useAuthStore";
+import { toast } from "sonner";
+import { useQueryClient } from "react-query";
+
+interface PlaylistInfoProps {
+  open: boolean;
+  handleClose: () => void;
+  name: string;
+  image: string;
+  description: string;
+}
+
+const { Header, Title, Body } = Modal;
+
+export const EditPlaylistInfoModal = ({
+  open,
+  handleClose,
+  name,
+  image,
+  description,
+}: PlaylistInfoProps) => {
+  const { register, setValue, handleSubmit } = useForm();
+  const { userData } = useAuthStore();
+  const { playlistId } = useParams();
+  const queryClient = useQueryClient();
+
+  const handleEditPlaylist = handleSubmit(async (formData) => {
+    const body = {
+      name: formData.name,
+      description: formData.description,
+    };
+    try {
+      await PlaylistService.editPlaylist(userData.token, playlistId!, body);
+      toast("Playlist editada");
+      queryClient.invalidateQueries({ queryKey: "playlistData" });
+      handleClose();
+    } catch (error) {
+      toast("No se pudo editar su playlist");
+      handleClose();
+    }
+  });
+
+  useEffect(() => {
+    setValue("name", name);
+    setValue("description", description);
+  }, []);
+  return (
+    <Modal open={open} onModalClose={handleClose} size="xs">
+      <Header className="text-gray-400 bg-zinc-800">
+        <Title className="font-bold text-white">Editar informacíon</Title>
+      </Header>
+      <Body className="bg-zinc-800">
+        <section className="flex justify-center items-stretch gap-5">
+          <img src={image} className="w-36 h-36" alt={name} />
+          <form onSubmit={handleEditPlaylist} className="flex flex-col gap-2">
+            <label htmlFor="">
+              <input
+                className="w-full text-white outline-none bg-zinc-600 p-2 focus:bg-zinc-700 rounded-sm"
+                type="text"
+                {...register("name")}
+              />
+            </label>
+            <label htmlFor="">
+              <textarea
+                className="w-full text-white outline-none bg-zinc-600 px-2 focus:bg-zinc-700 rounded-sm"
+                id=""
+                cols={20}
+                rows={4}
+                {...register("description")}
+              ></textarea>
+              <div className="flex justify-end">
+                <button className="rounded-3xl font-bold bg-white mt-2 p-3 w-28 text-black hover:scale-105">
+                  Guardar
+                </button>
+              </div>
+            </label>
+          </form>
+        </section>
+      </Body>
+    </Modal>
+  );
+};

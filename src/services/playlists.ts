@@ -65,10 +65,24 @@ const addSongToPlaylist = async (
   return data;
 };
 
+const editPlaylist = async (token: string, playlistId: string, body: any) => {
+  const { data } = await axios.patch(
+    `${API_URL}/playlists/${playlistId}`,
+    body,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  return data;
+};
+
 export const PlaylistService = {
   getLikedSongsPlaylist,
   getPlaylistDataById,
   getUserPlaylists,
   addPlaylist,
   addSongToPlaylist,
+  editPlaylist,
 };

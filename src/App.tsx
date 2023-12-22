@@ -9,6 +9,7 @@ import { ProtectedRoutes } from "./components/ProtectedRoutes";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Toaster } from "sonner";
 import { Search } from "./components/Search";
+import "birdies/dist/style.css";
 
 function App() {
   const { isLogin } = useAuthStore();

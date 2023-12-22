@@ -4,6 +4,7 @@ import { useAuthStore } from "../store/useAuthStore";
 import { useParams } from "react-router-dom";
 import { useFetchPlaylistData } from "../hooks/useFetchPlaylists";
 import { useEffect } from "react";
+import { PlaylistImage } from "../components/playlist/PlaylistImage";
 
 export const PlaylistPage = () => {
   const { playlistId } = useParams();
@@ -29,13 +30,11 @@ export const PlaylistPage = () => {
         className="relative flex flex-col h-full bg-gradient-to-b p-4 from-violet-600 via-zinc-950 overflow-x-hidden"
       >
         <header className="flex flex-row gap-8 px-6 mt-12">
-          <picture>
-            <img
-              className="w-52 h-52"
-              src={playlist?.image}
-              alt={playlist?.name}
-            />
-          </picture>
+          <PlaylistImage
+            name={playlist?.name}
+            description={playlist?.description}
+            image={playlist?.image}
+          />
           <div className="flex flex-col justify-end gap-6">
             <div>
               <h2>{playlist?.type}</h2>
@@ -44,6 +43,7 @@ export const PlaylistPage = () => {
               </h1>
             </div>
             <div>
+              <p className="text-gray-400">{playlist?.description}</p>
               <p>{playlist?.songs?.length} canciones</p>
             </div>
           </div>
