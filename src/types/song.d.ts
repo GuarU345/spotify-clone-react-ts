@@ -20,3 +20,15 @@ export interface SongLiked {
 export interface LikedSongs extends Song {
   liked: boolean;
 }
+
+export interface PlaylistSong {
+  id: string;
+  name: string;
+  album: {
+    name: string;
+    image: string;
+  };
+  artist: {
+    name: string;
+  };
+}

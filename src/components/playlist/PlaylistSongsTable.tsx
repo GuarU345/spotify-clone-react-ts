@@ -7,7 +7,7 @@ import { useAuthStore } from "../../store/useAuthStore";
 import { CardPlayButton } from "../player/CardPlayButton";
 import { useParams } from "react-router-dom";
 import { MUSIC_TYPES } from "../../utils/helpers";
-import { MdMoreHoriz } from "react-icons/md";
+import { EmptyPlaylist } from "./EmptyPlaylist";
 
 export const PlaylistSongsTable = ({ songs }) => {
   const [newSongs, setNewSongs] = useState<SongLiked[]>([]);
@@ -41,29 +41,35 @@ export const PlaylistSongsTable = ({ songs }) => {
       <div className="rounded-full w-[50px] h-[50px] bg-green-500 grid place-content-center hover:scale-105">
         <CardPlayButton id={playlistId!} type={MUSIC_TYPES.PLAYLIST} />
       </div>
-      <table className="min-w-full table-auto text-left divide-y divide-gray-100/50">
-        <thead>
-          <tr>
-            <th className="px-4 py-2">#</th>
-            <th className="px-4 py-2">Titulo</th>
-            <th className="px-4 py-2">Álbum</th>
-            <th className="px-4 py-2"></th>
-            <th className="px-4 py-2">
-              <IoTimeOutline />
-            </th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {newSongs?.map((song, index: number) => (
-            <PlaylistSongItem
-              key={song.song.id}
-              likedSong={song}
-              index={index}
-            />
-          ))}
-        </tbody>
-      </table>
+      {newSongs?.length === 0 ? (
+        <EmptyPlaylist />
+      ) : (
+        <>
+          <table className="min-w-full table-auto text-left divide-y divide-gray-100/50">
+            <thead>
+              <tr>
+                <th className="px-4 py-2">#</th>
+                <th className="px-4 py-2">Titulo</th>
+                <th className="px-4 py-2">Álbum</th>
+                <th className="px-4 py-2"></th>
+                <th className="px-4 py-2">
+                  <IoTimeOutline />
+                </th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {newSongs?.map((song, index: number) => (
+                <PlaylistSongItem
+                  key={song.song.id}
+                  likedSong={song}
+                  index={index}
+                />
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
     </div>
   );
 };

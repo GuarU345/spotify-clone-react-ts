@@ -35,8 +35,18 @@ export const getLikedSongsByUserId = async (
   return data;
 };
 
+const searchSongsForYourPlaylist = async (token: string, name: string) => {
+  const { data } = await axios.get(`${API_URL}/search/songs?name=${name}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
+
 export const SongService = {
   getSongsByAlbumId,
   getLikedSongsByUserId,
   search,
+  searchSongsForYourPlaylist,
 };
