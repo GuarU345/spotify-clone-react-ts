@@ -1,7 +1,22 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export const useAuthStore = create(
+interface UserData {
+  token: string | null;
+  user_id: string | null;
+}
+
+interface State {
+  isLogin: boolean;
+  userData: UserData;
+}
+
+interface Actions {
+  setIsLogin: (state: boolean) => void;
+  setUserData: (state: UserData) => void;
+}
+
+export const useAuthStore = create<State & Actions>()(
   persist(
     (set) => ({
       isLogin: false,
