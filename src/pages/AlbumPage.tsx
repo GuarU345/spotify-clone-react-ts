@@ -7,6 +7,7 @@ import { AlbumLike } from "../components/album/AlbumLike";
 import { useAuthStore } from "../store/useAuthStore";
 import { useFetchAlbumData } from "../hooks/useFetchAlbums";
 import { MUSIC_TYPES } from "../utils/helpers";
+import { Banner } from "../components/Banner";
 
 export const AlbumPage = () => {
   const [numberSongs, setNumberSongs] = useState(0);
@@ -17,7 +18,7 @@ export const AlbumPage = () => {
     data: album,
     isLoading,
     refetch,
-  } = useFetchAlbumData(userData.token, albumId!);
+  } = useFetchAlbumData(userData.token!!, albumId!);
 
   const countSongs = () => {
     setNumberSongs(album?.songs.length);
@@ -27,6 +28,7 @@ export const AlbumPage = () => {
     countSongs();
     refetch();
   }, [albumId]);
+
   return (
     <Layout>
       {isLoading && (
@@ -34,47 +36,20 @@ export const AlbumPage = () => {
           <p>Loading...</p>
         </>
       )}
-
       <div
         style={{
           background: `linear-gradient(to top,#18181b 45%,${album?.color} 55%)`,
         }}
         className={`relative flex flex-col h-full overflow-x-hidden z-10`}
       >
-        <header className="flex flex-row gap-8 px-6 mt-12">
-          <picture>
-            <img
-              className="w-52 h-52"
-              src={album?.image}
-              alt={album?.name}
-              title={album?.name}
-            />
-          </picture>
-          <div className="flex flex-col justify-between">
-            <h2 className="flex flex-1 items-end">{album?.type}</h2>
-            <div>
-              <h1 className="text-5xl font-bold block text-white">
-                {album?.name}
-                <span></span>
-              </h1>
-            </div>
-
-            <div className="flex-1 flex items-end">
-              <div className="text-sm text-gray-300 font-normal">
-                <div>
-                  <span>{album?.artist}</span>
-                </div>
-                <p className="mt-1">
-                  <span className="text-white">
-                    {numberSongs}
-                    {numberSongs > 1 ? " canciones" : " cancion"}
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </header>
-
+        <Banner
+          image={album?.image}
+          legend={album?.type}
+          length={numberSongs}
+          subparagraph={album?.artist}
+          title={album?.name}
+          color={album?.color}
+        />
         <div className="mt-10 px-6 flex gap-10 items-center">
           <CardPlayButton id={albumId!} type={MUSIC_TYPES.ALBUM} />
           <AlbumLike albumId={albumId!} />

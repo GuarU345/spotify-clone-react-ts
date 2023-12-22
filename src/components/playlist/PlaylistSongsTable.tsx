@@ -18,8 +18,8 @@ export const PlaylistSongsTable = ({ songs }) => {
     if (!songs) return;
     const songsData = songs.map((song) => song.song);
     const likeds = await SongService.getLikedSongsByUserId(
-      userData.token,
-      userData.user_id,
+      userData.token!,
+      userData.user_id!,
       songsData
     );
     const likedSongs = songs.map((song) => {
