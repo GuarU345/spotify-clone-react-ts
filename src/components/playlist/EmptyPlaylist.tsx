@@ -18,7 +18,7 @@ export const EmptyPlaylist = () => {
       return;
     }
     const result = await SongService.searchSongsForYourPlaylist(
-      userData.token,
+      userData.token!,
       formData.search
     );
     setResults(result);

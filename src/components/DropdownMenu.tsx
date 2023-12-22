@@ -16,8 +16,8 @@ import { useHandleAddPlaylist } from "../hooks/useHandleAddPlaylist";
 export const DropdownMenu = ({ songId }: { songId: string }) => {
   const { userData } = useAuthStore();
   const { data: userPlaylists, isLoading } = useFetchUserPlaylists(
-    userData.token,
-    userData.user_id
+    userData.token!,
+    userData.user_id!
   );
   const { handleAddPlaylist } = useHandleAddPlaylist();
 
@@ -25,7 +25,7 @@ export const DropdownMenu = ({ songId }: { songId: string }) => {
     try {
       toast.dismiss();
       await PlaylistService.addSongToPlaylist(
-        userData.token,
+        userData.token!,
         playlistId,
         songId
       );

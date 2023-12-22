@@ -18,7 +18,7 @@ export const SongLike = ({ liked, songId }: Props) => {
     if (liked === false) {
       try {
         toast.dismiss();
-        await likeSong(userData.token, userData.user_id, songId);
+        await likeSong(userData.token!, userData.user_id!, songId);
         setIsLiked(true);
         await queryClient.invalidateQueries({ queryKey: "playlistData" });
         toast("Añadida a canciones que te gustan");
@@ -28,7 +28,7 @@ export const SongLike = ({ liked, songId }: Props) => {
     } else {
       try {
         toast.dismiss();
-        await dislikeSong(userData.token, userData.user_id, songId);
+        await dislikeSong(userData.token!, userData.user_id!, songId);
         setIsLiked(false);
         await queryClient.invalidateQueries({ queryKey: "playlistData" });
         toast("Quitada de las canciones que te gustan");

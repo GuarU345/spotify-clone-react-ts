@@ -15,12 +15,10 @@ export interface Playlist {
   name: string;
   description: string | null;
   image: string;
-  songs: [
-    {
-      album: Album;
-      song: Song;
-      artist: Artist;
-    }
-  ];
+  songs: {
+    album: Album;
+    song: Song;
+    artist: Artist;
+  }[];
   type: string;
 }

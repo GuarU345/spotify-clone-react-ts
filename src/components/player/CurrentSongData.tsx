@@ -5,7 +5,7 @@ export const CurrentSongData = () => {
   const { currentMusic, currentSong } = usePlayerStore();
   let songInfo;
   if (currentMusic.id !== null) {
-    songInfo = currentMusic.songs[currentSong];
+    songInfo = currentMusic.songs![currentSong];
   }
 
   useEffect(() => {}, [currentSong]);

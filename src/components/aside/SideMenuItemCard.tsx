@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 export const SideMenuItemCard = () => {
   const { userData } = useAuthStore();
   const { data, isLoading } = useFetchLikedData(
-    userData.token,
-    userData.user_id
+    userData.token!,
+    userData.user_id!
   );
 
   return (

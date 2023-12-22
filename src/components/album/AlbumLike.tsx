@@ -17,8 +17,8 @@ export const AlbumLike = ({ albumId }: Props) => {
 
   const isLikedAlbum = async () => {
     const { liked } = await AlbumsService.checkUserLikesAlbum(
-      userData.token,
-      userData.user_id,
+      userData.token!,
+      userData.user_id!,
       albumId
     );
     setIsLiked(liked);
@@ -28,7 +28,7 @@ export const AlbumLike = ({ albumId }: Props) => {
     if (isLiked === false) {
       try {
         toast.dismiss();
-        await likeAlbum(userData.token, userData.user_id, albumId);
+        await likeAlbum(userData.token!, userData.user_id!, albumId);
         setIsLiked(true);
         await queryClient.invalidateQueries({ queryKey: "likedData" });
         toast("Añadido a tu biblioteca");
@@ -38,7 +38,7 @@ export const AlbumLike = ({ albumId }: Props) => {
     } else {
       try {
         toast.dismiss();
-        await dislikeAlbum(userData.token, userData.user_id, albumId);
+        await dislikeAlbum(userData.token!, userData.user_id!, albumId);
         setIsLiked(false);
         await queryClient.invalidateQueries({ queryKey: "likedData" });
         toast("Se ha quitado de tu biblioteca");

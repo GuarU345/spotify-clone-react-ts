@@ -24,7 +24,7 @@ export const Search = () => {
       setResults(null);
       return;
     }
-    const result = await SongService.search(userData.token, search);
+    const result = await SongService.search(userData.token!, search);
     setResults(result);
   };
 

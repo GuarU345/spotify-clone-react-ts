@@ -8,7 +8,7 @@ export const useAddSongToPlaylist = () => {
     try {
       toast.dismiss();
       await PlaylistService.addSongToPlaylist(
-        userData.token,
+        userData.token!,
         playlistId,
         songId
       );

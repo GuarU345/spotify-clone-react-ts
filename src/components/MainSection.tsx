@@ -10,7 +10,7 @@ export const MainSection = () => {
   const { userData } = useAuthStore();
 
   const getAlbums = async () => {
-    const data = await AlbumsService.getAlbums(userData.token);
+    const data = await AlbumsService.getAlbums(userData.token!);
     setAlbums(data);
   };
 

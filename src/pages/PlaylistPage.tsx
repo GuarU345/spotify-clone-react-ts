@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useFetchPlaylistData } from "../hooks/useFetchPlaylists";
 import { useEffect } from "react";
 import { PlaylistImage } from "../components/playlist/PlaylistImage";
+import { Banner } from "../components/Banner";
 
 export const PlaylistPage = () => {
   const { playlistId } = useParams();
@@ -13,11 +14,12 @@ export const PlaylistPage = () => {
     data: playlist,
     isLoading,
     refetch,
-  } = useFetchPlaylistData(userData.token, playlistId!);
+  } = useFetchPlaylistData(userData.token!!, playlistId!);
 
   useEffect(() => {
     refetch();
   }, [playlistId]);
+
   return (
     <Layout>
       {isLoading && (
@@ -26,30 +28,15 @@ export const PlaylistPage = () => {
         </>
       )}
       <div
-        id="playlist-container"
-        className="relative flex flex-col h-full bg-gradient-to-b p-4 from-violet-600 via-zinc-950 overflow-x-hidden"
+        className={`relative flex flex-col h-full overflow-x-hidden z-10 ${"bg-gradient-to-b from-violet-600 via-zinc-950"}`}
       >
-        <header className="flex flex-row gap-8 px-6 mt-12">
-          <PlaylistImage
-            name={playlist?.name}
-            description={playlist?.description}
-            image={playlist?.image}
-          />
-          <div className="flex flex-col justify-end gap-6">
-            <div>
-              <h2>{playlist?.type}</h2>
-              <h1 className="text-5xl font-bold block text-white">
-                {playlist?.name}
-              </h1>
-            </div>
-            <div>
-              <p className="text-gray-400">{playlist?.description}</p>
-              <p>{playlist?.songs?.length} canciones</p>
-            </div>
-          </div>
-        </header>
-
-        <div className="mt-10 px-6 flex gap-10 items-center"></div>
+        <Banner
+          image={playlist?.image}
+          legend={playlist?.type}
+          length={playlist?.songs?.length}
+          subparagraph={playlist?.name}
+          title={playlist?.name}
+        />
 
         <div className="relative z-10 px-6 pt-10"></div>
 

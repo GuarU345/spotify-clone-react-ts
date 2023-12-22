@@ -13,7 +13,7 @@ export const useHandleAddPlaylist = (): UseHandleAddPlaylist => {
 
   const handleAddPlaylist = async () => {
     try {
-      await PlaylistService.addPlaylist(userData.token, userData.user_id);
+      await PlaylistService.addPlaylist(userData.token!, userData.user_id!);
       toast("Añadida a tu biblioteca");
       queryClient.invalidateQueries({ queryKey: "likedData" });
       queryClient.invalidateQueries({ queryKey: "userPlaylists" });
