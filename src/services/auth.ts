@@ -6,6 +6,12 @@ const signin = async (body) => {
   return data;
 };
 
+const signup = async (body) => {
+  const { data } = await axios.post(`${API_URL}/signup`, body);
+  return data;
+};
+
 export const AuthService = {
   signin,
+  signup,
 };

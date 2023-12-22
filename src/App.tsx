@@ -10,6 +10,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Toaster } from "sonner";
 import { Search } from "./components/Search";
 import "birdies/dist/style.css";
+import { Signup } from "./pages/auth/Signup";
 
 function App() {
   const { isLogin } = useAuthStore();
@@ -27,6 +28,7 @@ function App() {
               <Route path="/search" element={<Search />} />
             </Route>
             <Route path="/signin" element={<Auth isLogin={isLogin} />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
         </BrowserRouter>
         <Toaster position="bottom-center" />
