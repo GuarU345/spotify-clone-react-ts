@@ -50,7 +50,7 @@ export const EditPlaylistInfoModal = ({
     setValue("description", description);
   }, []);
   return (
-    <Modal open={open} onModalClose={handleClose} size="xs">
+    <Modal open={open} onModalClose={handleClose} size="sm">
       <Header className="text-gray-400 bg-zinc-800">
         <Title className="font-bold text-white">Editar informacíon</Title>
       </Header>

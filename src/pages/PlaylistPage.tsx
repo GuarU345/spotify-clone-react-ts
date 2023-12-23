@@ -4,7 +4,6 @@ import { useAuthStore } from "../store/useAuthStore";
 import { useParams } from "react-router-dom";
 import { useFetchPlaylistData } from "../hooks/useFetchPlaylists";
 import { useEffect } from "react";
-import { PlaylistImage } from "../components/playlist/PlaylistImage";
 import { Banner } from "../components/Banner";
 
 export const PlaylistPage = () => {
@@ -34,7 +33,7 @@ export const PlaylistPage = () => {
           image={playlist?.image}
           legend={playlist?.type}
           length={playlist?.songs?.length}
-          subparagraph={playlist?.name}
+          subparagraph={playlist?.description}
           title={playlist?.name}
         />
 

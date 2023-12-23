@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PlaylistImage } from "./playlist/PlaylistImage";
 
 interface Props {
   image: string;
@@ -18,9 +18,13 @@ export const Banner = ({
 }: Props) => {
   return (
     <header className="flex flex-row gap-8 px-6 mt-12">
-      <picture>
-        <img className="w-52 h-52" src={image} alt={title} title={title} />
-      </picture>
+      {legend === "Lista" ? (
+        <PlaylistImage name={title} image={image} description={subparagraph} />
+      ) : (
+        <picture>
+          <img className="w-52 h-52" src={image} alt={title} />
+        </picture>
+      )}
       <div className="flex flex-col justify-between">
         <h2 className="flex flex-1 items-end">{legend}</h2>
         <div>
