@@ -4,6 +4,7 @@ interface Album {
 }
 
 interface Song {
+  id: string;
   name: string;
 }
 
