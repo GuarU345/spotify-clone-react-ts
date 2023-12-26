@@ -39,10 +39,10 @@ export const EmptyPlaylist = () => {
       {results.length !== null
         ? results.map((item) => (
             <section
-              className="grid grid-cols-[500px,1fr,auto] items-center"
+              className="flex justify-between items-center"
               key={item.id}
             >
-              <div className="flex pt-5 px-6 gap-2 items-center ">
+              <div className="flex pt-5 px-6 gap-2 items-center">
                 <picture>
                   <img
                     src={item.album.image}

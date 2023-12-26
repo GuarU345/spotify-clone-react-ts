@@ -15,8 +15,6 @@ export const MainSection = () => {
     userData.user_id!
   );
 
-  console.log(playlists);
-
   const getAlbums = async () => {
     const data = await AlbumsService.getAlbums(userData.token!);
     setAlbums(data);

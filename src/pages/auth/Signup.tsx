@@ -1,24 +1,19 @@
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
-import { useCallback } from "react";
 
 export const Signup = () => {
   const { register, handleSubmit } = useForm();
   const { signup } = useAuth();
 
-  const handleSignup = useCallback(
-    () =>
-      handleSubmit((formData) => {
-        const authData = {
-          username: formData.username,
-          email: formData.email,
-          password: formData.password,
-        };
-        signup(authData);
-      }),
-    []
-  );
+  const handleSignup = handleSubmit((formData) => {
+    const authData = {
+      username: formData.username,
+      email: formData.email,
+      password: formData.password,
+    };
+    signup(authData);
+  });
 
   return (
     <div className="grid place-content-center h-screen bg-zinc-900">
