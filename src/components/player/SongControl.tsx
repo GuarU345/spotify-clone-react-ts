@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { usePlayerStore } from "../../store/usePlayerStore";
-import { Slider } from "../../../@/components/ui/slider";
+import { Slider } from "../Slider";
 
 export const SongControl = () => {
   const { duration, progress, sound, setProgress, isPlaying } =

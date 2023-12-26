@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import Layout from "../layouts/Layout";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { AlbumSongsTable } from "../components/album/AlbumSongsTable";
 import { CardPlayButton } from "../components/player/CardPlayButton";
 import { AlbumLike } from "../components/album/AlbumLike";
@@ -10,7 +10,6 @@ import { MUSIC_TYPES } from "../utils/helpers";
 import { Banner } from "../components/Banner";
 
 export const AlbumPage = () => {
-  const [numberSongs, setNumberSongs] = useState(0);
   const { albumId } = useParams();
   const { userData } = useAuthStore();
 
@@ -20,12 +19,7 @@ export const AlbumPage = () => {
     refetch,
   } = useFetchAlbumData(userData.token!!, albumId!);
 
-  const countSongs = () => {
-    setNumberSongs(album?.songs.length);
-  };
-
   useEffect(() => {
-    countSongs();
     refetch();
   }, [albumId]);
 
@@ -45,7 +39,7 @@ export const AlbumPage = () => {
         <Banner
           image={album?.image}
           legend={album?.type}
-          length={numberSongs}
+          length={album?.songs.length}
           subparagraph={album?.artist}
           title={album?.name}
           color={album?.color}

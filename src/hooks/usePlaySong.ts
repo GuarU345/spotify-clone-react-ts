@@ -2,7 +2,6 @@ import { userReproducingSomething } from "../services/user_actions";
 import { useAuthStore } from "../store/useAuthStore";
 import { usePlayerStore } from "../store/usePlayerStore";
 import { Song } from "../types/song";
-import { MUSIC_TYPES } from "../utils/helpers";
 
 export const usePlaySong = () => {
   const { userData } = useAuthStore();
@@ -32,9 +31,9 @@ export const usePlaySong = () => {
   const playAlbumOrPlaylist = async (
     id: string,
     type: string,
-    isPlayingAlbum: boolean
+    isPlayingSomething: boolean
   ) => {
-    if (isPlayingAlbum) {
+    if (isPlayingSomething) {
       setIsPlaying(false);
       sound.pause();
       return;

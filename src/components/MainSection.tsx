@@ -4,10 +4,18 @@ import { AlbumsService } from "../services/albums";
 import { Album } from "../types/album";
 import { useAuthStore } from "../store/useAuthStore";
 import { UserPanel } from "./user/UserPanel";
+import { useFetchUserPlaylists } from "../hooks/useFetchPlaylists";
+import { PlaylistCard } from "./playlist/PlaylistCard";
 
 export const MainSection = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
   const { userData } = useAuthStore();
+  const { data: playlists, isLoading } = useFetchUserPlaylists(
+    userData.token!,
+    userData.user_id!
+  );
+
+  console.log(playlists);
 
   const getAlbums = async () => {
     const data = await AlbumsService.getAlbums(userData.token!);
@@ -25,6 +33,14 @@ export const MainSection = () => {
             <UserPanel />
           </div>
           <p className="text-2xl">Buenos Dias</p>
+        </div>
+        <div>
+          {isLoading && <p>Loading...</p>}
+          <div className="flex gap-2">
+            {playlists?.map((playlist) => (
+              <PlaylistCard key={playlist.id} playlist={playlist} />
+            ))}
+          </div>
         </div>
         <div className="flex flex-wrap mt-6 gap-4">
           {albums.length > 0

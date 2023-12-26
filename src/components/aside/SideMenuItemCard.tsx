@@ -1,9 +1,12 @@
 import { useFetchLikedData } from "../../hooks/useFetchUserLikedData";
 import { useAuthStore } from "../../store/useAuthStore";
 import { Link } from "react-router-dom";
+import { usePlayerStore } from "../../store/usePlayerStore";
+import { HiSpeakerWave } from "react-icons/hi2";
 
 export const SideMenuItemCard = () => {
   const { userData } = useAuthStore();
+  const { currentMusic, isPlaying } = usePlayerStore();
   const { data, isLoading } = useFetchLikedData(
     userData.token!,
     userData.user_id!
@@ -35,11 +38,20 @@ export const SideMenuItemCard = () => {
                 />
               </picture>
               <div className="flex flex-col text-white">
-                <p className="text-sm font-semibold">{likedData.name}</p>
-                <span className="text-xs text-gray-300">
-                  {likedData.author}
-                </span>
+                <p
+                  className={`text-sm font-semibold ${
+                    currentMusic.id === likedData.id ? "text-green-500" : ""
+                  }`}
+                >
+                  {likedData.name}
+                </p>
+                <p className="text-xs text-gray-300">{likedData.author}</p>
               </div>
+              {currentMusic.id === likedData.id && isPlaying ? (
+                <div className="flex ml-auto">
+                  <HiSpeakerWave className="text-green-500" size={20} />
+                </div>
+              ) : null}
             </li>
           </Link>
         ))}

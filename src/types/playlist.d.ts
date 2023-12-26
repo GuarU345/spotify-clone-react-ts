@@ -22,3 +22,11 @@ export interface Playlist {
   }[];
   type: string;
 }
+
+export interface PlaylistInfo {
+  id: string;
+  name: string;
+  image: string;
+  author: string;
+  type: string;
+}

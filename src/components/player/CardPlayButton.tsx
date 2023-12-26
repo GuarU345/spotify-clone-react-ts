@@ -9,15 +9,15 @@ type Props = {
 
 export const CardPlayButton = ({ id, type }: Props) => {
   const { currentMusic, isPlaying } = usePlayerStore();
-  const isPlayingAlbum = isPlaying && currentMusic?.id === id;
+  const isPlayingAlbumOrPlaylist = isPlaying && currentMusic?.id === id;
   const { playAlbumOrPlaylist } = usePlaySong();
 
   return (
     <button
-      onClick={() => playAlbumOrPlaylist(id, type, isPlayingAlbum)}
+      onClick={() => playAlbumOrPlaylist(id, type, isPlayingAlbumOrPlaylist)}
       className="rounded-full bg-green-500 p-3 text-2xl text-black hover:scale-105 hover:bg-green-400"
     >
-      {isPlayingAlbum ? <BsPauseFill /> : <BsPlayFill />}
+      {isPlayingAlbumOrPlaylist ? <BsPauseFill /> : <BsPlayFill />}
     </button>
   );
 };
