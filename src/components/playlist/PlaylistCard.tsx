@@ -11,7 +11,7 @@ export const PlaylistCard = ({ playlist }: Props) => {
   return (
     <article className="flex group relative shadow-lg hover:bg-white/20 bg-zinc-500/30">
       <div
-        className={`absolute right-2  translate-y-3
+        className={`absolute right-2  translate-y-2
           transition-all duration-500 opacity-0
            group-hover:opacity-100
           z-10
@@ -20,7 +20,7 @@ export const PlaylistCard = ({ playlist }: Props) => {
         <CardPlayButton id={playlist.id} type={MUSIC_TYPES.PLAYLIST} />
       </div>
       <Link
-        className="transition-all duration-300 w-[300px] flex items-center relative p-2 overflow-hidden gap-2  rounded-md"
+        className="transition-all duration-300 w-[400px] flex items-center relative p-1 overflow-hidden gap-2 rounded-md"
         to={`/playlist/${playlist.id}`}
       >
         <picture>

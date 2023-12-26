@@ -1,3 +1,4 @@
+import { AlbumImage } from "./album/AlbumImage";
 import { PlaylistImage } from "./playlist/PlaylistImage";
 
 interface Props {
@@ -21,9 +22,7 @@ export const Banner = ({
       {legend === "Lista" ? (
         <PlaylistImage name={title} image={image} description={subparagraph} />
       ) : (
-        <picture>
-          <img className="w-52 h-52" src={image} alt={title} />
-        </picture>
+        <AlbumImage name={title} image={image} />
       )}
       <div className="flex flex-col justify-between">
         <h2 className="flex flex-1 items-end">{legend}</h2>
