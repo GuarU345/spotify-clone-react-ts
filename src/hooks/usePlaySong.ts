@@ -15,7 +15,7 @@ export const usePlaySong = () => {
   } = usePlayerStore();
 
   const playUniqueSong = async (id: string, songId: string, type: string) => {
-    const data = await userReproducingSomething(userData.token!!, id, type);
+    const data = await userReproducingSomething(userData.token!, id, type);
     setIsPlaying(true);
     setCurrentMusic({
       id: data.id,
@@ -45,7 +45,7 @@ export const usePlaySong = () => {
       return;
     }
 
-    const data = await userReproducingSomething(userData.token!!, id, type);
+    const data = await userReproducingSomething(userData.token!, id, type);
     setIsPlaying(true);
     setCurrentMusic({
       id: data.id,

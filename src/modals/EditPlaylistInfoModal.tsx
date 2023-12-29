@@ -35,7 +35,7 @@ export const EditPlaylistInfoModal = ({
       description: formData.description,
     };
     try {
-      await PlaylistService.editPlaylist(userData.token!!, playlistId!, body);
+      await PlaylistService.editPlaylist(userData.token!, playlistId!, body);
       toast("Playlist editada");
       queryClient.invalidateQueries({ queryKey: "playlistData" });
       handleClose();
