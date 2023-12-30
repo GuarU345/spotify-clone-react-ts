@@ -20,7 +20,7 @@ export const PlaylistCard = ({ playlist }: Props) => {
         <CardPlayButton id={playlist.id} type={MUSIC_TYPES.PLAYLIST} />
       </div>
       <Link
-        className="transition-all duration-300 w-[400px] flex items-center relative p-1 overflow-hidden gap-2 rounded-md"
+        className="transition-all duration-300 xl:w-[300px] 2xl:w-[400px] flex items-center relative p-1 overflow-hidden gap-2 rounded-md"
         to={`/playlist/${playlist.id}`}
       >
         <picture>

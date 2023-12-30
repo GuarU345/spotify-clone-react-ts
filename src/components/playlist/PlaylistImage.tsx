@@ -19,7 +19,11 @@ export const PlaylistImage = ({
     <>
       <div className="relative group">
         <picture>
-          <img className="w-52 h-52" src={image} alt={name} />
+          <img
+            className="xl:w-48 xl:h-48 2xl:w-52 2xl:h-52"
+            src={image}
+            alt={name}
+          />
         </picture>
         <div
           onClick={handleOpen}

@@ -26,9 +26,7 @@ export const PlaylistPage = () => {
           <p>Loading...</p>
         </>
       )}
-      <div
-        className={`relative flex flex-col h-full overflow-x-hidden z-10 ${"bg-gradient-to-b from-violet-600 via-zinc-950"}`}
-      >
+      <div className="relative flex flex-col h-full overflow-x-hidden z-10 bg-gradient-to-b from-violet-600 from-20% via-zinc-950">
         <Banner
           image={playlist?.image}
           legend={playlist?.type}
@@ -36,10 +34,6 @@ export const PlaylistPage = () => {
           subparagraph={playlist?.description}
           title={playlist?.name}
         />
-
-        <div className="relative z-10 px-6 pt-10"></div>
-
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 -z-[1]"></div>
 
         <section className="p-6">
           <PlaylistSongsTable songs={playlist?.songs ? playlist?.songs : []} />

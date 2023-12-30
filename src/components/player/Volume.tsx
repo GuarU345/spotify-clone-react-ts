@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import { usePlayerStore } from "../../store/usePlayerStore";
 import { Slider } from "../Slider";
+import { CgMenu } from "react-icons/cg";
 import {
   VolumeMax,
   VolumeMedium,
   VolumeMin,
   VolumeSilence,
 } from "../../icons/Icons";
+import { Link } from "react-router-dom";
 
 export const Volume = () => {
   const { sound, changeVolume, setVolume, volume } = usePlayerStore();

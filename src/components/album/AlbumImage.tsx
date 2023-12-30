@@ -21,7 +21,7 @@ export const AlbumImage = ({ image, name }: Props) => {
       <picture>
         <img
           onClick={handleZoomImage}
-          className="w-52 h-52 hover:scale-105 hover:cursor-pointer transition-all"
+          className="xl:w-48 xl:h-48 2xl:w-52 2xl:h-52 hover:scale-105 hover:cursor-pointer transition-all"
           src={image}
           alt={name}
         />

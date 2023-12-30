@@ -37,5 +37,5 @@ export const SongLike = ({ liked, songId }: Props) => {
       }
     }
   };
-  return <Like fn={handleLike} liked={isLiked} />;
+  return <Like fn={handleLike} liked={isLiked} size={18} />;
 };

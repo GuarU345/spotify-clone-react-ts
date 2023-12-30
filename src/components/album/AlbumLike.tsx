@@ -51,5 +51,5 @@ export const AlbumLike = ({ albumId }: Props) => {
   useEffect(() => {
     isLikedAlbum();
   }, [albumId]);
-  return <Like fn={handleLikeAlbum} liked={isLiked!} />;
+  return <Like fn={handleLikeAlbum} liked={isLiked!} size={25} />;
 };
