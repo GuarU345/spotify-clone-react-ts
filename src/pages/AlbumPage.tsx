@@ -17,7 +17,7 @@ export const AlbumPage = () => {
     data: album,
     isLoading,
     refetch,
-  } = useFetchAlbumData(userData.token!, albumId!);
+  } = useFetchAlbumData(userData.token!, albumId!, userData.user_id!);
 
   useEffect(() => {
     refetch();

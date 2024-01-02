@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
 import { IoTimeOutline } from "react-icons/io5";
-import { SongService } from "../../services/songs";
-import { LikedSongs, Song } from "../../types/song";
+import { LikedSongs } from "../../types/song";
 import { SongLike } from "../song/SongLike";
-import { useAuthStore } from "../../store/useAuthStore";
 import { DropdownMenu } from "../DropdownMenu";
 import { useParams } from "react-router-dom";
 import { BsPlayFill } from "react-icons/bs";
@@ -11,37 +8,14 @@ import { usePlaySong } from "../../hooks/usePlaySong";
 import { MUSIC_TYPES } from "../../utils/helpers";
 
 type Props = {
-  songs: Song[];
+  songs: LikedSongs[];
   artist: string;
 };
 
 export const AlbumSongsTable = ({ songs, artist }: Props) => {
-  const [newSongs, setNewSongs] = useState<LikedSongs[]>([]);
-  const { userData } = useAuthStore();
   const { albumId } = useParams();
   const { playUniqueSong } = usePlaySong();
 
-  const getUserLikedSongs = async () => {
-    const likeds = await SongService.getLikedSongsByUserId(
-      userData.token!,
-      userData.user_id!,
-      songs
-    );
-    const likedSongs = songs.map((song) => {
-      const isLiked = likeds.includes(song.id);
-      return {
-        ...song,
-        liked: isLiked,
-      };
-    });
-    setNewSongs(likedSongs);
-  };
-
-  useEffect(() => {
-    if (songs) {
-      getUserLikedSongs();
-    }
-  }, [songs]);
   return (
     <table className="table-auto min-w-full text-left divide-y divide-gray-100/50">
       <thead>
@@ -57,7 +31,7 @@ export const AlbumSongsTable = ({ songs, artist }: Props) => {
         </tr>
       </thead>
       <tbody>
-        {newSongs.map((song, index) => (
+        {songs?.map((song, index) => (
           <tr
             key={song.id}
             className="index-row text-gray-300 text-sm hover:cursor-pointer hover:bg-white/10"
