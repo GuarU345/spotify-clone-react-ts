@@ -1,2 +1,2 @@
-# Spotify Clone - React + TS
+# Clon de Spotify - React + TS
 
