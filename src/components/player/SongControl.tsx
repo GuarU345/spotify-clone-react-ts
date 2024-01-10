@@ -47,9 +47,9 @@ export const SongControl = () => {
       <p className="text-gray-400">{formatTime(progress)}</p>
       <Slider
         className="w-[400px] cursor-pointer"
-        value={[parseInt(progress || "0")]}
+        value={[Number(progress || "0")]}
         min={0}
-        max={parseInt(duration || "0")}
+        max={Number(duration || "0")}
         onValueChange={(value) => handleSeek(value)}
       />
       <p className="text-gray-400">{formatTime(duration)}</p>

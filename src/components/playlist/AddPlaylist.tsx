@@ -7,7 +7,10 @@ export const AddPlaylist = () => {
   const { isLogin } = useAuthStore();
   const { handleAddPlaylist } = useHandleAddPlaylist();
   const notAuthorizedAction = () => {
-    toast("No tienes acceso a esta funcion");
+    toast.dismiss();
+    toast(
+      "No tienes acceso a esta funcion, inicia sesion para empezar a crear tus propias playlists"
+    );
   };
   return (
     <button
