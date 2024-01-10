@@ -11,6 +11,7 @@ import { Toaster } from "sonner";
 import { Search } from "./components/Search";
 import "birdies/dist/style.css";
 import { Signup } from "./pages/auth/Signup";
+import { TestPage } from "./pages/TestPage";
 
 function App() {
   const { isLogin } = useAuthStore();
@@ -20,13 +21,14 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Navigate to="/signin" />} />
+            <Route path="/" element={<Navigate to="/test" />} />
             <Route element={<ProtectedRoutes isAllowed={isLogin} />}>
               <Route path="/home" element={<Main />} />
               <Route path="/album/:albumId" element={<AlbumPage />} />
               <Route path="/playlist/:playlistId" element={<PlaylistPage />} />
               <Route path="/search" element={<Search />} />
             </Route>
+            <Route path="/test" element={<TestPage />} />
             <Route path="/signin" element={<Auth isLogin={isLogin} />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>

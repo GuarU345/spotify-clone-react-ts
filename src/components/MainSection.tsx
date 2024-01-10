@@ -48,8 +48,6 @@ export const MainSection = () => {
 
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-800 via-zinc-900/80 -z-[1]"></div>
       </main>
-
-      <style></style>
     </main>
   );
 };
