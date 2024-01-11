@@ -1,6 +1,12 @@
 import { useQuery } from "react-query";
 import { AlbumsService } from "../services/albums";
 
+export const useFetchAlbums = (token: string) => {
+  return useQuery("albums", () => {
+    return AlbumsService.getAlbums(token);
+  });
+};
+
 export const useFetchAlbumData = (
   token: string,
   id: string,
