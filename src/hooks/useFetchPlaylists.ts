@@ -1,9 +1,13 @@
 import { useQuery } from "react-query";
 import { PlaylistService } from "../services/playlists";
 
-export const useFetchPlaylistData = (token: string, id: string) => {
+export const useFetchPlaylistData = (
+  token: string,
+  id: string,
+  userId: string
+) => {
   return useQuery("playlistData", () => {
-    return PlaylistService.getPlaylistDataById(token, id);
+    return PlaylistService.getPlaylistDataById(token, id, userId);
   });
 };
 

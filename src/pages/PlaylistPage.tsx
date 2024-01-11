@@ -13,7 +13,7 @@ export const PlaylistPage = () => {
     data: playlist,
     isLoading,
     refetch,
-  } = useFetchPlaylistData(userData.token!, playlistId!);
+  } = useFetchPlaylistData(userData.token!, playlistId!, userData.user_id!);
 
   useEffect(() => {
     refetch();

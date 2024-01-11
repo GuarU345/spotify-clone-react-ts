@@ -36,12 +36,19 @@ const getLikedSongsPlaylist = async (token: string, userId: string) => {
   };
 };
 
-const getPlaylistDataById = async (token: string, playlistId: string) => {
-  const { data } = await axios.get(`${API_URL}/playlists/${playlistId}/songs`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+const getPlaylistDataById = async (
+  token: string,
+  playlistId: string,
+  userId: string
+) => {
+  const { data } = await axios.get(
+    `${API_URL}/playlists/${playlistId}/songs?userId=${userId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   return {
     ...data,
     type: "Lista",
