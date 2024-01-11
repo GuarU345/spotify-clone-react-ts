@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { AlbumCardTest } from "../components/test/AlbumCardTest";
 import Layout from "../layouts/Layout";
 
@@ -32,7 +32,10 @@ const albums = [
   },
 ];
 
-export const TestPage = () => {
+export const TestPage = ({ isLogin }: { isLogin: boolean }) => {
+  if (isLogin) {
+    return <Navigate to="/home" />;
+  }
   return (
     <Layout>
       <main id="playlist-container" className="relative">

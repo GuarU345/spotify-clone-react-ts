@@ -28,7 +28,7 @@ function App() {
               <Route path="/playlist/:playlistId" element={<PlaylistPage />} />
               <Route path="/search" element={<Search />} />
             </Route>
-            <Route path="/test" element={<TestPage />} />
+            <Route path="/test" element={<TestPage isLogin={isLogin} />} />
             <Route path="/signin" element={<Auth isLogin={isLogin} />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
