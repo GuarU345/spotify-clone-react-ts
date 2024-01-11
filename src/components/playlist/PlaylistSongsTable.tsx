@@ -5,7 +5,9 @@ import { useParams } from "react-router-dom";
 import { MUSIC_TYPES } from "../../utils/helpers";
 import { EmptyPlaylist } from "./EmptyPlaylist";
 
-export const PlaylistSongsTable = ({ songs }) => {
+const INITIAL_PLAYLIST_NAME = "Canciones que te gustan";
+
+export const PlaylistSongsTable = ({ songs, playlistName }) => {
   const { playlistId } = useParams();
 
   return (
@@ -13,7 +15,7 @@ export const PlaylistSongsTable = ({ songs }) => {
       <div className="rounded-full w-[50px] h-[50px] bg-green-500 grid place-content-center hover:scale-105">
         <CardPlayButton id={playlistId!} type={MUSIC_TYPES.PLAYLIST} />
       </div>
-      {songs?.length === 0 ? (
+      {songs?.length === 0 && playlistName !== INITIAL_PLAYLIST_NAME ? (
         <EmptyPlaylist />
       ) : (
         <>

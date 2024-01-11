@@ -36,7 +36,10 @@ export const PlaylistPage = () => {
         />
 
         <section className="p-6">
-          <PlaylistSongsTable songs={playlist?.songs ? playlist?.songs : []} />
+          <PlaylistSongsTable
+            songs={playlist?.songs ? playlist?.songs : []}
+            playlistName={playlist?.name}
+          />
         </section>
       </div>
     </Layout>
