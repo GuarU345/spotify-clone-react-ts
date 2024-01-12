@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AlbumImageModal } from "../../modals/AlbumImageModal";
 import ReactDOM from "react-dom";
+import { useOpen } from "../../hooks/useOpen";
 
 interface Props {
   name: string;
@@ -8,14 +9,8 @@ interface Props {
 }
 
 export const AlbumImage = ({ image, name }: Props) => {
-  const [open, setOpen] = useState(false);
-  const handleZoomImage = () => {
-    setOpen(true);
-  };
+  const { handleClose, handleZoomImage, open } = useOpen();
 
-  const handleClose = () => {
-    setOpen(false);
-  };
   return (
     <>
       <picture>
