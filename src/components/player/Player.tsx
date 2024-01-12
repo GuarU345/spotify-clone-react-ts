@@ -4,26 +4,12 @@ import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
 import { Volume } from "./Volume";
 import { SongControl } from "./SongControl";
+import { usePlayer } from "../../hooks/usePlayer";
 
 export const Player = () => {
-  const { isPlaying, setIsPlaying, goNextSong, goPreviousSong, sound } =
-    usePlayerStore();
+  const { sound, isPlaying } = usePlayerStore();
+  const { handlePreviousSong, handlePlay, handleNextSong } = usePlayer();
 
-  const handlePlay = () => {
-    if (isPlaying) {
-      sound.pause();
-    } else {
-      sound.play();
-    }
-    setIsPlaying(!isPlaying);
-  };
-
-  const handleNextSong = () => {
-    goNextSong();
-  };
-  const handlePreviousSong = () => {
-    goPreviousSong();
-  };
   return (
     <div className="flex justify-between items-center">
       <div>

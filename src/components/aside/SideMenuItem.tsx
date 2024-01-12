@@ -1,12 +1,11 @@
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import { Link } from "react-router-dom";
 
 type Props = {
   href: string;
-  children: ReactNode;
 };
 
-export const SideMenuItem = ({ href, children }: Props) => {
+export const SideMenuItem = ({ href, children }: PropsWithChildren<Props>) => {
   return (
     <li>
       <Link
