@@ -10,31 +10,6 @@ const search = async (token: string, name: string) => {
   return data;
 };
 
-const getSongsByAlbumId = async (token: string | null, albumId: number) => {
-  const { data } = await axios.get(`${API_URL}/albums/${albumId}/songs`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  return data;
-};
-
-export const getLikedSongsByUserId = async (
-  token: string | null,
-  userId: string,
-  songIds: unknown
-) => {
-  const body = {
-    songs: songIds,
-  };
-  const { data } = await axios.post(`${API_URL}/users/${userId}/songs/`, body, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  return data;
-};
-
 const searchSongsForYourPlaylist = async (token: string, name: string) => {
   const { data } = await axios.get(`${API_URL}/search/songs?name=${name}`, {
     headers: {
@@ -45,8 +20,6 @@ const searchSongsForYourPlaylist = async (token: string, name: string) => {
 };
 
 export const SongService = {
-  getSongsByAlbumId,
-  getLikedSongsByUserId,
   search,
   searchSongsForYourPlaylist,
 };

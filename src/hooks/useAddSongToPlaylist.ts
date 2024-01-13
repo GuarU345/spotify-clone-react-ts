@@ -1,11 +1,11 @@
 import { toast } from "sonner";
 import { PlaylistService } from "../services/playlists";
 import { useAuthStore } from "../store/useAuthStore";
-import { useQueryClient } from "react-query";
+import { useInvalidateQuery } from "./useInvalidateQuery";
 
 export const useAddSongToPlaylist = () => {
   const { userData } = useAuthStore();
-  const queryClient = useQueryClient();
+  const { invalidate } = useInvalidateQuery();
   const addSongToPlaylist = async ({ playlistId, songId }) => {
     try {
       toast.dismiss();
@@ -15,7 +15,7 @@ export const useAddSongToPlaylist = () => {
         songId
       );
       toast.success("Cancion añadida a la playlist");
-      await queryClient.invalidateQueries({ queryKey: "playlistData" });
+      await invalidate("playlistData");
     } catch (error) {
       toast.dismiss();
       toast.error("No se pudo agregar la cancion a la playlist");

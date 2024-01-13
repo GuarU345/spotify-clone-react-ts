@@ -4,11 +4,12 @@ import { useAuthStore } from "../store/useAuthStore";
 import { AlbumsService } from "../services/albums";
 import { toast } from "sonner";
 import { dislikeAlbum, likeAlbum } from "../services/user_actions";
+import { useInvalidateQuery } from "./useInvalidateQuery";
 
 export const useLikeAlbum = (albumId: string) => {
   const [isLiked, setIsLiked] = useState<boolean>();
   const { userData } = useAuthStore();
-  const queryClient = useQueryClient();
+  const { invalidate } = useInvalidateQuery();
 
   const [error, setError] = useState<any>();
 
@@ -33,14 +34,14 @@ export const useLikeAlbum = (albumId: string) => {
       if (!isLiked) {
         await likeAlbum(userData.token!, userData.user_id!, albumId);
         setIsLiked(true);
-        await queryClient.invalidateQueries({ queryKey: "likedData" });
+        await invalidate("likedData");
         toast("Añadido a tu biblioteca");
         return;
       }
 
       await dislikeAlbum(userData.token!, userData.user_id!, albumId);
       setIsLiked(false);
-      await queryClient.invalidateQueries({ queryKey: "likedData" });
+      await invalidate("likedData");
       toast("Se ha quitado de tu biblioteca");
     } catch (error) {
       console.log(error);
