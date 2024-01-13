@@ -23,19 +23,6 @@ const addPlaylist = async (token: string, userId: string) => {
   return data;
 };
 
-const getLikedSongsPlaylist = async (token: string, userId: string) => {
-  const res = await fetch(`${API_URL}/users/${userId}/playlists/love`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  const likedPlaylist = await res.json();
-  return {
-    ...likedPlaylist,
-    type: "Lista",
-  };
-};
-
 const getPlaylistDataById = async (
   token: string,
   playlistId: string,
@@ -86,7 +73,6 @@ const editPlaylist = async (token: string, playlistId: string, body: any) => {
 };
 
 export const PlaylistService = {
-  getLikedSongsPlaylist,
   getPlaylistDataById,
   getUserPlaylists,
   addPlaylist,
