@@ -41,7 +41,7 @@ export const DropdownMenu = ({ songId }: { songId: string }) => {
       <DropdownMenuTrigger className="text-gray-400 hover:text-white text-2xl">
         <BsPlus />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="flex flex-col gap-3 py-2 w-56 bg-zinc-800">
+      <DropdownMenuContent className="flex flex-col gap-3 py-2 w-56 bg-zinc-800 z-20">
         <DropdownMenuLabel className="text-center">
           Añadir a la lista
         </DropdownMenuLabel>
