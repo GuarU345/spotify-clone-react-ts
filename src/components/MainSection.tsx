@@ -4,6 +4,7 @@ import { UserPanel } from "./user/UserPanel";
 import { useFetchUserPlaylists } from "../hooks/useFetchPlaylists";
 import { PlaylistCard } from "./playlist/PlaylistCard";
 import { useFetchAlbums } from "../hooks/useFetchAlbums";
+import { Greetings } from "./Greetings";
 
 export const MainSection = () => {
   const { userData } = useAuthStore();
@@ -20,7 +21,7 @@ export const MainSection = () => {
           <div className="flex justify-end">
             <UserPanel />
           </div>
-          <p className="text-2xl">Buenos Dias</p>
+          <Greetings />
         </div>
         <div>
           {isLoadingPlaylists && <p>Loading...</p>}

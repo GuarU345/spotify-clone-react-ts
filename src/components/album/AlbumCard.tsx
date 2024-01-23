@@ -20,7 +20,7 @@ export const AlbumCard = ({ album }: Props) => {
         <CardPlayButton id={album.id} type={MUSIC_TYPES.ALBUM} />
       </div>
       <Link
-        className="transition-all duration-300 w-44 flex flex-col relative p-2 overflow-hidden gap-2 pb-6 "
+        className="transition-all duration-300 w-44 flex flex-col relative p-2 overflow-hidden gap-2 pb-6"
         to={`/album/${album.id}`}
       >
         <picture className="aspect-square w-full h-auto flex-none">
