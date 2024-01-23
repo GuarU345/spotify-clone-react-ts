@@ -11,7 +11,7 @@ export const Player = () => {
   const { handlePreviousSong, handlePlay, handleNextSong } = usePlayer();
 
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center sticky">
       <div>
         <CurrentSongData />
       </div>

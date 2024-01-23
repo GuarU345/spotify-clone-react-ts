@@ -9,7 +9,7 @@ type Props = {
 
 export const AlbumCard = ({ album }: Props) => {
   return (
-    <article className="group relative shadow-lg hover:bg-zinc-800 bg-zinc-500/30">
+    <article className="group relative shadow-lg hover:bg-zinc-800 bg-zinc-500/30 rounded-md">
       <div
         className={`absolute right-4 bottom-20 translate-y-4
           transition-all duration-500 opacity-0
@@ -20,7 +20,7 @@ export const AlbumCard = ({ album }: Props) => {
         <CardPlayButton id={album.id} type={MUSIC_TYPES.ALBUM} />
       </div>
       <Link
-        className="transition-all duration-300 w-44 flex flex-col relative p-2 overflow-hidden gap-2 pb-6 rounded-md"
+        className="transition-all duration-300 w-44 flex flex-col relative p-2 overflow-hidden gap-2 pb-6 "
         to={`/album/${album.id}`}
       >
         <picture className="aspect-square w-full h-auto flex-none">

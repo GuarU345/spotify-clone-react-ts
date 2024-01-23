@@ -29,7 +29,7 @@ export const SideMenuItemCard = () => {
                 : `/playlist/${likedData.id}`
             }
           >
-            <li className="flex items-center  p-2 gap-2 hover:cursor-pointer hover:bg-white/5">
+            <li className="flex items-center p-2 gap-2 hover:cursor-pointer hover:bg-white/5 rounded-md">
               <picture>
                 <img
                   className="w-14 h-14 rounded-md"
@@ -39,9 +39,8 @@ export const SideMenuItemCard = () => {
               </picture>
               <div className="flex flex-col text-white">
                 <p
-                  className={`text-sm font-semibold ${
-                    currentMusic.id === likedData.id ? "text-green-500" : ""
-                  }`}
+                  className={`text-sm font-semibold ${currentMusic.id === likedData.id ? "text-green-500" : ""
+                    }`}
                 >
                   {likedData.name}
                 </p>

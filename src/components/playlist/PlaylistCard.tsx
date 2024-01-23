@@ -9,7 +9,7 @@ interface Props {
 
 export const PlaylistCard = ({ playlist }: Props) => {
   return (
-    <article className="flex group relative shadow-lg hover:bg-white/20 bg-zinc-500/30">
+    <article className="flex group relative shadow-lg hover:bg-white/20 bg-zinc-500/30 rounded-md">
       <div
         className={`absolute right-2  translate-y-2
           transition-all duration-500 opacity-0
@@ -20,7 +20,7 @@ export const PlaylistCard = ({ playlist }: Props) => {
         <CardPlayButton id={playlist.id} type={MUSIC_TYPES.PLAYLIST} />
       </div>
       <Link
-        className="transition-all duration-300 xl:w-[300px] 2xl:w-[400px] flex items-center relative p-1 overflow-hidden gap-2 rounded-md"
+        className="transition-all duration-300 xl:w-[300px] 2xl:w-[400px] flex items-center relative p-1 overflow-hidden gap-2"
         to={`/playlist/${playlist.id}`}
       >
         <picture>
