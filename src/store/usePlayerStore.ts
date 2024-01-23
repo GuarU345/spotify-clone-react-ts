@@ -61,7 +61,7 @@ export const usePlayerStore = create<State & Actions>((set, get) => ({
   setCurrentSong: (currentSong) => set({ currentSong }),
   setProgress: (progress) => set({ progress }),
   playMusic: async () => {
-    const { currentMusic, currentSong, volume, setProgress } = get();
+    const { currentMusic, currentSong, volume } = get();
     const { songs } = currentMusic;
     const findSong = songs![currentSong];
     const foundSong = STREAMSONGS.find(
@@ -76,9 +76,6 @@ export const usePlayerStore = create<State & Actions>((set, get) => ({
       src: [track],
       volume,
       html5: true,
-      onseeked: () => {
-        setProgress(newSound.seek());
-      },
       onloaderror: (error) => {
         console.error("Error durante la carga:", error);
       },
@@ -102,9 +99,7 @@ export const usePlayerStore = create<State & Actions>((set, get) => ({
     set({ currentSong: nextSong });
     sound.stop();
     set({ duration: null, progress: null });
-    setTimeout(() => {
-      playMusic();
-    }, 800);
+    playMusic();
   },
   goPreviousSong: () => {
     const { currentMusic, currentSong, playMusic, sound } = get();
@@ -113,9 +108,7 @@ export const usePlayerStore = create<State & Actions>((set, get) => ({
     set({ currentSong: previousSong });
     sound.stop();
     set({ duration: null, progress: null });
-    setTimeout(() => {
-      playMusic();
-    }, 800);
+    playMusic();
   },
   changeVolume: (volume) => {
     const { sound } = get();
