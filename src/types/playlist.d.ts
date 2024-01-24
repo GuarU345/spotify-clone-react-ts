@@ -30,4 +30,5 @@ export interface PlaylistInfo {
   image: string;
   author: string;
   type: string;
+  haveSongs: boolean
 }

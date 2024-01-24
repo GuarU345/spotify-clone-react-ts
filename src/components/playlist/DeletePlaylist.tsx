@@ -11,6 +11,7 @@ export const DeletePlaylist = ({ playlistId }: { playlistId: string }) => {
 
     const handleRemovePlaylist = async () => {
         try {
+            toast.dismiss()
             await PlaylistService.deletePlaylist(userData.token!, playlistId)
             toast('Eliminada de tu biblioteca')
             navigate('/')
