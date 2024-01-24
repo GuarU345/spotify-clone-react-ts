@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL } from "../utils/helpers";
+import { API_URL, orderedPlaylists } from "../utils/helpers";
 
 const getUserPlaylists = async (token: string, userId: string) => {
   const { data } = await axios.get(`${API_URL}/users/${userId}/playlists`, {
@@ -7,7 +7,8 @@ const getUserPlaylists = async (token: string, userId: string) => {
       Authorization: `Bearer ${token}`,
     },
   });
-  return data;
+  data.sort(orderedPlaylists)
+  return data
 };
 
 const addPlaylist = async (token: string, userId: string) => {

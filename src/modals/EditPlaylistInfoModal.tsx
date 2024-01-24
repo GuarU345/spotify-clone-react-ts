@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
 import { toast } from "sonner";
 import { useQueryClient } from "react-query";
+import { useInvalidateQuery } from "../hooks/useInvalidateQuery";
 
 interface PlaylistInfoProps {
   open: boolean;
@@ -27,7 +28,7 @@ export const EditPlaylistInfoModal = ({
   const { register, setValue, handleSubmit } = useForm();
   const { userData } = useAuthStore();
   const { playlistId } = useParams();
-  const queryClient = useQueryClient();
+  const { invalidate } = useInvalidateQuery()
 
   const handleEditPlaylist = handleSubmit(async (formData) => {
     const body = {
@@ -37,7 +38,8 @@ export const EditPlaylistInfoModal = ({
     try {
       await PlaylistService.editPlaylist(userData.token!, playlistId!, body);
       toast("Playlist editada");
-      queryClient.invalidateQueries({ queryKey: "playlistData" });
+      await invalidate('playlistData');
+      await invalidate('likedData')
       handleClose();
     } catch (error) {
       toast("No se pudo editar su playlist");

@@ -1,8 +1,7 @@
+const currentDate = new Date()
+const currentHour = currentDate.getHours()
+
 export const Greetings = () => {
-
-    const currentDate = new Date()
-    const currentHour = currentDate.getHours()
-
     let greeting = ""
 
     if (currentHour < 12) {

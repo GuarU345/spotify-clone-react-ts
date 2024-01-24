@@ -2,10 +2,8 @@ import { IoTimeOutline } from "react-icons/io5";
 import { PlaylistSongItem } from "./PlaylistSongItem";
 import { CardPlayButton } from "../player/CardPlayButton";
 import { useParams } from "react-router-dom";
-import { MUSIC_TYPES } from "../../utils/helpers";
+import { INITIAL_PLAYLIST_NAME, MUSIC_TYPES } from "../../utils/helpers";
 import { EmptyPlaylist } from "./EmptyPlaylist";
-
-const INITIAL_PLAYLIST_NAME = "Canciones que te gustan";
 
 export const PlaylistSongsTable = ({ songs, playlistName }) => {
   const { playlistId } = useParams();
