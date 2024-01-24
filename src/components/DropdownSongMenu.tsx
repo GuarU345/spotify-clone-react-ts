@@ -12,7 +12,7 @@ import { BsPlus } from "react-icons/bs";
 import { MUSIC_TYPES } from "../utils/helpers";
 import { RemoveSong } from "./playlist/RemoveSong";
 
-export const DropdownMenu = ({ songId, type }: { songId: string, type: string }) => {
+export const DropdownSongMenu = ({ songId, type }: { songId: string, type: string }) => {
   return (
     <Dropdown>
       <DropdownMenuTrigger className="text-gray-400 hover:text-white text-2xl">

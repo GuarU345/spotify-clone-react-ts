@@ -98,8 +98,9 @@ export const VolumeMin = () => (
   </svg>
 );
 
-export const SuspensivePoints = () => (
+export const SuspensivePoints = ({ className }: { className?: string }) => (
   <svg
+    className={className}
     fill="currentColor"
     role="img"
     height="18"

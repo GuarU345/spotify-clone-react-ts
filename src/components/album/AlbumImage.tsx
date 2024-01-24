@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { AlbumImageModal } from "../../modals/AlbumImageModal";
 import ReactDOM from "react-dom";
 import { useOpen } from "../../hooks/useOpen";

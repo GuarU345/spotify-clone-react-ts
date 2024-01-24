@@ -85,6 +85,15 @@ const editPlaylist = async (token: string, playlistId: string, body: any) => {
   return data;
 };
 
+const deletePlaylist = async (token: string, playlistId) => {
+  const { data } = await axios.delete(`${API_URL}/playlists/${playlistId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  return data
+}
+
 export const PlaylistService = {
   getPlaylistDataById,
   getUserPlaylists,
@@ -92,4 +101,5 @@ export const PlaylistService = {
   addSongToPlaylist,
   removeSongOnPlaylist,
   editPlaylist,
+  deletePlaylist
 };

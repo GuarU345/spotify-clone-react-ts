@@ -1,7 +1,7 @@
 import { IoTimeOutline } from "react-icons/io5";
 import { LikedSongs } from "../../types/song";
 import { SongLike } from "../song/SongLike";
-import { DropdownMenu } from "../DropdownMenu";
+import { DropdownSongMenu } from "../DropdownSongMenu";
 import { useParams } from "react-router-dom";
 import { BsPlayFill } from "react-icons/bs";
 import { usePlaySong } from "../../hooks/usePlaySong";
@@ -59,7 +59,7 @@ export const AlbumSongsTable = ({ songs, artist }: Props) => {
             </td>
             <td className="px-4 py-2">{song.duration}</td>
             <td>
-              <DropdownMenu songId={song.id} type={MUSIC_TYPES.ALBUM} />
+              <DropdownSongMenu songId={song.id} type={MUSIC_TYPES.ALBUM} />
             </td>
           </tr>
         ))}

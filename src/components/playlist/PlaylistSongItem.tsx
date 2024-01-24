@@ -3,7 +3,7 @@ import { SongLiked } from "../../types/song";
 import { SongLike } from "../song/SongLike";
 import "../../styles/likedsong.css";
 import { useParams } from "react-router-dom";
-import { DropdownMenu } from "../DropdownMenu";
+import { DropdownSongMenu } from "../DropdownSongMenu";
 import { usePlaySong } from "../../hooks/usePlaySong";
 import { MUSIC_TYPES } from "../../utils/helpers";
 
@@ -63,7 +63,7 @@ export const PlaylistSongItem = ({ likedSong, index }: Props) => {
         </td>
         <td className="px-4 py-2">{likedSong.song.duration}</td>
         <td>
-          <DropdownMenu songId={likedSong.song.id} type={MUSIC_TYPES.PLAYLIST} />
+          <DropdownSongMenu songId={likedSong.song.id} type={MUSIC_TYPES.PLAYLIST} />
         </td>
       </tr>
     </>

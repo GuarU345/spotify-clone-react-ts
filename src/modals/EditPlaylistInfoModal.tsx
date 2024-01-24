@@ -5,7 +5,6 @@ import { PlaylistService } from "../services/playlists";
 import { useParams } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
 import { toast } from "sonner";
-import { useQueryClient } from "react-query";
 import { useInvalidateQuery } from "../hooks/useInvalidateQuery";
 
 interface PlaylistInfoProps {
