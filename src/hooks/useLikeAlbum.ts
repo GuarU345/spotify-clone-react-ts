@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useQueryClient } from "react-query";
 import { useAuthStore } from "../store/useAuthStore";
 import { AlbumsService } from "../services/albums";
 import { toast } from "sonner";

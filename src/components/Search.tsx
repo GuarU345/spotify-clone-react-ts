@@ -3,17 +3,18 @@ import Layout from "../layouts/Layout";
 import { SongService } from "../services/songs";
 import { useAuthStore } from "../store/useAuthStore";
 import { Link } from "react-router-dom";
+import { AlbumLike } from "./album/AlbumLike";
 
 interface Searched {
-  type: string;
-  id: number;
+  id: string;
   name: string;
   image: string;
   artist: string;
+  type: string;
 }
 
 export const Search = () => {
-  const [results, setResults] = useState<Searched | null>(null);
+  const [results, setResults] = useState<Searched[] | null>(null);
   const { userData } = useAuthStore();
   const searchSomething = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -41,40 +42,42 @@ export const Search = () => {
             />
           </form>
         </section>
-        {results !== null ? (
-          results.type === "album" ? (
-            <Link to={`/album/${results.id}`}>
-              <div className="flex pt-5 px-6 gap-2 items-center">
+        {results?.map(result => (
+          result.type === "album" ? <div className="flex items-center justify-between pt-5 px-6" key={result.id}>
+            <Link title={`ir al album ${result.name}`} to={`/album/${result.id}`}>
+              <div className="flex gap-2 items-center">
                 <picture>
                   <img
                     className="w-14 h-14 rounded-md"
-                    src={results.image}
-                    alt={results.name}
+                    src={result.image}
+                    alt={result.name}
                   />
                 </picture>
                 <div className="flex flex-col gap-1">
-                  <p className="text-sm font-semibold">{results.name}</p>
-                  <p className="text-xs text-gray-300">{results.artist}</p>
+                  <p className="text-sm font-semibold">{result.name}</p>
+                  <p className="text-xs text-gray-300">{result.artist}</p>
                 </div>
               </div>
             </Link>
-          ) : (
-            <div className="flex pt-5 px-6 gap-2 items-center">
+            <div>
+              {result.type === "album" && <AlbumLike albumId={result.id} />}
+            </div>
+          </div>
+            : <div key={result.id} className="flex pt-5 px-6 gap-2 items-center">
               <picture>
                 <img
                   className="w-14 h-14 rounded-md"
-                  src={results.image}
-                  alt={results.name}
+                  src={result.image}
+                  alt={result.name}
                 />
               </picture>
               <div className="flex flex-col gap-1">
-                <p className="text-sm font-semibold">{results.name}</p>
-                <p className="text-xs text-gray-300">{results.artist}</p>
+                <p className="text-sm font-semibold">{result.name}</p>
+                <p className="text-xs text-gray-300">{result.artist}</p>
               </div>
-            </div>
-          )
-        ) : null}
+            </div>))}
       </Layout>
     </>
   );
 };
+
