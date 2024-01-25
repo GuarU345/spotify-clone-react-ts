@@ -1,6 +1,7 @@
 import { Link, Navigate } from "react-router-dom";
 import { AlbumCardTest } from "../components/test/AlbumCardTest";
 import Layout from "../layouts/Layout";
+import { Greetings } from "../components/Greetings";
 
 const albums = [
   {
@@ -53,7 +54,7 @@ export const TestPage = ({ isLogin }: { isLogin: boolean }) => {
                 </button>
               </Link>
             </div>
-            <p className="text-2xl">Buenos Dias</p>
+            <Greetings />
           </div>
           <div>
             <div className="flex gap-2">
@@ -66,8 +67,8 @@ export const TestPage = ({ isLogin }: { isLogin: boolean }) => {
           <div className="flex flex-wrap mt-6 gap-4">
             {albums.length > 0
               ? albums.map((album) => (
-                  <AlbumCardTest key={album.id} album={album} />
-                ))
+                <AlbumCardTest key={album.id} album={album} />
+              ))
               : null}
           </div>
 
