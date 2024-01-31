@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Album } from "../../types/album";
 import { CardPlayButton } from "../player/CardPlayButton";
-import { MUSIC_TYPES } from "../../utils/helpers";
+import { MUSIC_TYPES } from "../../utils/constants";
 
 type Props = {
   album: Album;

@@ -3,7 +3,7 @@ import { Howl } from "howler";
 import { STREAMSONGS } from "../../public/songs";
 import { PlaylistSong } from "../types/song";
 import { Song } from "../types/playlist";
-import { isUndefined } from "../utils/helpers";
+import { isUndefined } from "../utils/functions";
 
 interface CurrentMusic {
   id: string | null;

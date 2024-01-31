@@ -6,7 +6,7 @@ import { CardPlayButton } from "../components/player/CardPlayButton";
 import { AlbumLike } from "../components/album/AlbumLike";
 import { useAuthStore } from "../store/useAuthStore";
 import { useFetchAlbumData } from "../hooks/useFetchAlbums";
-import { MUSIC_TYPES } from "../utils/helpers";
+import { MUSIC_TYPES } from "../utils/constants";
 import { Banner } from "../components/Banner";
 
 export const AlbumPage = () => {

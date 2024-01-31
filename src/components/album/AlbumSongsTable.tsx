@@ -5,7 +5,7 @@ import { DropdownSongMenu } from "../DropdownSongMenu";
 import { useParams } from "react-router-dom";
 import { BsPlayFill } from "react-icons/bs";
 import { usePlaySong } from "../../hooks/usePlaySong";
-import { MUSIC_TYPES } from "../../utils/helpers";
+import { MUSIC_TYPES } from "../../utils/constants";
 
 type Props = {
   songs: LikedSongs[];

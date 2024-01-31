@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { PlaylistInfo } from "../../types/playlist";
 import { CardPlayButton } from "../player/CardPlayButton";
-import { MUSIC_TYPES } from "../../utils/helpers";
+import { MUSIC_TYPES } from "../../utils/constants";
 
 interface Props {
   playlist: PlaylistInfo;

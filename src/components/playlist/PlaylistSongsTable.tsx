@@ -2,7 +2,7 @@ import { IoTimeOutline } from "react-icons/io5";
 import { PlaylistSongItem } from "./PlaylistSongItem";
 import { CardPlayButton } from "../player/CardPlayButton";
 import { useParams } from "react-router-dom";
-import { INITIAL_PLAYLIST_NAME, MUSIC_TYPES } from "../../utils/helpers";
+import { INITIAL_PLAYLIST_NAME, MUSIC_TYPES } from "../../utils/constants";
 import { EmptyPlaylist } from "./EmptyPlaylist";
 import { DropdownPlaylistMenu } from "../DropdownPlaylistMenu";
 

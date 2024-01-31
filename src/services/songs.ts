@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL } from "../utils/helpers";
+import { API_URL } from "../utils/constants";
 
 const search = async (token: string, name: string) => {
   const { data } = await axios.get(`${API_URL}/search?name=${name}`, {

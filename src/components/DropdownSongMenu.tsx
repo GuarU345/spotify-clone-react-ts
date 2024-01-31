@@ -9,7 +9,7 @@ import {
 import { AddOptions } from "./AddOptions";
 import { SuspensivePoints } from "../icons/Icons";
 import { BsPlus } from "react-icons/bs";
-import { MUSIC_TYPES } from "../utils/helpers";
+import { MUSIC_TYPES } from "../utils/constants";
 import { RemoveSong } from "./playlist/RemoveSong";
 
 export const DropdownSongMenu = ({ songId, type }: { songId: string, type: string }) => {

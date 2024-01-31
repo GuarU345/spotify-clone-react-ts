@@ -1,4 +1,7 @@
 import { create } from "zustand";
+import { EditPlaylistInfoModal } from "../modals/EditPlaylistInfoModal";
+import { AlbumImageModal } from "../modals/AlbumImageModal";
+import { ALBUMIMAGEMODALID, EDITPLAYLISTMODALID } from "../utils/modal-ids";
 
 interface ModalState {
   id: string | symbol
@@ -20,8 +23,10 @@ interface Actions {
   hideModal: () => void;
 }
 
-// LLENAR AQUI LOS MODALES
-const modals = {}
+const modals = {
+  [EDITPLAYLISTMODALID]: EditPlaylistInfoModal,
+  [ALBUMIMAGEMODALID]: AlbumImageModal
+}
 
 export const useModal = create<State & Actions>((set) => ({
   isOpen: false,

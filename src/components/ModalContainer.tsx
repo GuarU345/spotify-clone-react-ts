@@ -5,7 +5,6 @@ export function ModalContainer() {
 
   const renderModal = () => {
     if (select === null) return null;
-
     const { id, props } = select;
 
     const Component = modals[id];

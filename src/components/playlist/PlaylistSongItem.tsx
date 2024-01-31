@@ -5,7 +5,7 @@ import "../../styles/likedsong.css";
 import { useParams } from "react-router-dom";
 import { DropdownSongMenu } from "../DropdownSongMenu";
 import { usePlaySong } from "../../hooks/usePlaySong";
-import { MUSIC_TYPES } from "../../utils/helpers";
+import { MUSIC_TYPES } from "../../utils/constants";
 
 type Props = {
   likedSong: SongLiked;

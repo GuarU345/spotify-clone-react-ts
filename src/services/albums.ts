@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL } from "../utils/helpers";
+import { API_URL } from "../utils/constants";
 
 const getLikedAlbums = async (token: string | null, userId: string) => {
   const { data } = await axios.get(`${API_URL}/users/${userId}/albums`, {
