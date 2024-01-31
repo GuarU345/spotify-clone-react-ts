@@ -1,5 +1,6 @@
 import { useModal } from "../store/useModal";
 
+
 export function ModalContainer() {
   const { isOpen, modals, select } = useModal()
 
@@ -9,7 +10,7 @@ export function ModalContainer() {
 
     const Component = modals[id];
 
-    return <Component {...props} />;
+    return <Component {...props} />
   };
 
   return isOpen && renderModal()

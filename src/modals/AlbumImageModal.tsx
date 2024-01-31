@@ -1,10 +1,11 @@
+import { Modal } from "../components/Modal";
 import { useModal } from "../store/useModal";
 
 export const AlbumImageModal = ({ image }) => {
   const { hideModal } = useModal()
 
   return (
-    <>
+    <Modal>
       <picture>
         <img
           className="object-contain w-[200px] h-[200px] rounded-lg lg:w-[400px] lg:h-[400px] xl:w-[425px] xl:h-[425px] 2xl:h-[600px] 2xl:w-[600px] animate-fade-up animate-ease-in-out"
@@ -18,6 +19,6 @@ export const AlbumImageModal = ({ image }) => {
       >
         Cerrar
       </button>
-    </>
+    </Modal>
   );
 };

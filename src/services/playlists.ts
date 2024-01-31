@@ -25,6 +25,16 @@ const addPlaylist = async (token: string, userId: string) => {
   return data;
 };
 
+const getPlaylistById = async (token: string, playlistId: string) => {
+  const { data } = await axios.get(`${API_URL}/playlists/${playlistId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+  return data
+}
+
 const getPlaylistDataById = async (
   token: string,
   playlistId: string,
@@ -98,6 +108,7 @@ const deletePlaylist = async (token: string, playlistId) => {
 export const PlaylistService = {
   getPlaylistDataById,
   getUserPlaylists,
+  getPlaylistById,
   addPlaylist,
   addSongToPlaylist,
   removeSongOnPlaylist,

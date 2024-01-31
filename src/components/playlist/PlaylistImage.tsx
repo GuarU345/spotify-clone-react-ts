@@ -1,7 +1,7 @@
 import { RxPencil1 } from "react-icons/rx";
-import { EditPlaylistInfoModal } from "../../modals/EditPlaylistInfoModal";
-import { useModal } from "../../hooks/useModal";
-import ReactDOM from "react-dom";
+import { useModal } from "../../store/useModal";
+import { EDITPLAYLISTMODALID } from "../../utils/modal-ids";
+import { useParams } from "react-router-dom";
 
 interface PlaylistImageProps {
   name: string;
@@ -12,9 +12,9 @@ interface PlaylistImageProps {
 export const PlaylistImage = ({
   name,
   image,
-  description,
 }: PlaylistImageProps) => {
-  const { handleOpen, handleClose, open } = useModal();
+  const { showModal } = useModal();
+  const { playlistId } = useParams()
   return (
     <>
       <div className="relative group">
@@ -26,7 +26,7 @@ export const PlaylistImage = ({
           />
         </picture>
         <div
-          onClick={handleOpen}
+          onClick={() => showModal(EDITPLAYLISTMODALID, { playlistId })}
           className={
             name !== "Canciones que te gustan"
               ? "hidden absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 group-hover:flex flex-col items-center justify-center"
@@ -36,17 +36,6 @@ export const PlaylistImage = ({
           <RxPencil1 size={58} />
           <p>Elegir foto</p>
         </div>
-        {open &&
-          ReactDOM.createPortal(
-            <EditPlaylistInfoModal
-              open={open}
-              handleClose={handleClose}
-              name={name}
-              image={image}
-              description={description}
-            />,
-            document.body
-          )}
       </div>
     </>
   );

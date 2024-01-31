@@ -12,6 +12,7 @@ import { Search } from "./components/Search";
 import "birdies/dist/style.css";
 import { Signup } from "./pages/auth/Signup";
 import { TestPage } from "./pages/TestPage";
+import { ModalContainer } from "./components/ModalContainer";
 
 function App() {
   const { isLogin } = useAuthStore();
@@ -34,6 +35,7 @@ function App() {
           </Routes>
         </BrowserRouter>
         <Toaster position="bottom-center" />
+        <ModalContainer />
       </QueryClientProvider>
     </>
   );

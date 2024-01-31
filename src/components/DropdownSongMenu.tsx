@@ -25,9 +25,7 @@ export const DropdownSongMenu = ({ songId, type, playlistName }: { songId: strin
             <BsPlus className="text-gray-400" size={25} />
             <p>Añadir a lista</p>
           </DropdownMenuSubTrigger>
-          <DropdownMenuPortal>
-            <AddOptions songId={songId} />
-          </DropdownMenuPortal>
+          <AddOptions songId={songId} />
         </DropdownMenuSub>
         {type === MUSIC_TYPES.PLAYLIST && onlyCreatedPlaylistsCanBeModified(playlistName) && <RemoveSong songId={songId} />}
       </DropdownMenuContent>

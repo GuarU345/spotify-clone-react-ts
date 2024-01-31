@@ -5,7 +5,7 @@ import { useAuthStore } from '../../store/useAuthStore'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 
-export const DeletePlaylist = ({ playlistId }: { playlistId: string }) => {
+export const DeletePlaylistOption = ({ playlistId }: { playlistId: string }) => {
     const { userData } = useAuthStore()
     const navigate = useNavigate()
 

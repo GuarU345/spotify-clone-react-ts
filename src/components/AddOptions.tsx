@@ -2,7 +2,7 @@ import { useFetchUserPlaylists } from "../hooks/useFetchPlaylists";
 import { useHandleAddPlaylist } from "../hooks/useHandleAddPlaylist";
 import { useAddSongToPlaylist } from "../hooks/useAddSongToPlaylist";
 import { useAuthStore } from "../store/useAuthStore";
-import { DropdownMenuItem, DropdownMenuSubContent } from "../../@/components/ui/dropdown-menu";
+import { DropdownMenuItem, DropdownMenuPortal, DropdownMenuSubContent } from "../../@/components/ui/dropdown-menu";
 import { BsPlus } from "react-icons/bs";
 
 export const AddOptions = ({ songId }: { songId: string }) => {
@@ -21,25 +21,27 @@ export const AddOptions = ({ songId }: { songId: string }) => {
           <p>Loading...</p>
         </>
       )}
-      <DropdownMenuSubContent className="flex flex-col gap-3 py-1 w-56 bg-zinc-800 z-20">
-        <DropdownMenuItem
-          onClick={handleAddPlaylist}
-          className="hover:bg-white/20 p-2 cursor-default"
-        >
-          <BsPlus className="text-gray-400" size={25} /> <p className="text-white">Crear lista</p>
-        </DropdownMenuItem>
-        {userPlaylists?.map((userPlaylist) => (
+      <DropdownMenuPortal>
+        <DropdownMenuSubContent className="flex flex-col gap-3 py-1 w-56 bg-zinc-800 z-20">
           <DropdownMenuItem
-            key={userPlaylist.id}
-            onClick={() =>
-              addSongToPlaylist({ playlistId: userPlaylist.id, songId })
-            }
-            className="hover:bg-white/20 p-3 cursor-default"
+            onClick={handleAddPlaylist}
+            className="hover:bg-white/20 p-2 cursor-default"
           >
-            <button className="px-2 text-sm text-white">{userPlaylist.name}</button>
+            <BsPlus className="text-gray-400" size={25} /> <p className="text-white">Crear lista</p>
           </DropdownMenuItem>
-        ))}
-      </DropdownMenuSubContent>
+          {userPlaylists?.map((userPlaylist) => (
+            <DropdownMenuItem
+              key={userPlaylist.id}
+              onClick={() =>
+                addSongToPlaylist({ playlistId: userPlaylist.id, songId })
+              }
+              className="hover:bg-white/20 p-3 cursor-default"
+            >
+              <button className="px-2 text-sm text-white">{userPlaylist.name}</button>
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuSubContent>
+      </DropdownMenuPortal>
     </>
   );
 };
