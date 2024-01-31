@@ -2,9 +2,10 @@ import { IoTimeOutline } from "react-icons/io5";
 import { PlaylistSongItem } from "./PlaylistSongItem";
 import { CardPlayButton } from "../player/CardPlayButton";
 import { useParams } from "react-router-dom";
-import { INITIAL_PLAYLIST_NAME, MUSIC_TYPES } from "../../utils/constants";
+import { MUSIC_TYPES } from "../../utils/constants";
 import { EmptyPlaylist } from "./EmptyPlaylist";
 import { DropdownPlaylistMenu } from "../DropdownPlaylistMenu";
+import { onlyCreatedPlaylistsCanBeModified } from "../../utils/functions";
 
 export const PlaylistSongsTable = ({ songs, playlistName }) => {
   const { playlistId } = useParams();
@@ -16,10 +17,10 @@ export const PlaylistSongsTable = ({ songs, playlistName }) => {
           <CardPlayButton id={playlistId!} type={MUSIC_TYPES.PLAYLIST} />
         </div>}
         <div>
-          <DropdownPlaylistMenu />
+          {onlyCreatedPlaylistsCanBeModified(playlistName) && <DropdownPlaylistMenu playlistId={playlistId!} />}
         </div>
       </section>
-      {songs?.length === 0 && playlistName !== INITIAL_PLAYLIST_NAME ? (
+      {songs?.length === 0 && onlyCreatedPlaylistsCanBeModified(playlistName) ? (
         <EmptyPlaylist />
       ) : (
         <>
@@ -42,6 +43,7 @@ export const PlaylistSongsTable = ({ songs, playlistName }) => {
                   key={song.song.id}
                   likedSong={song}
                   index={index}
+                  playlistName={playlistName}
                 />
               ))}
             </tbody>

@@ -2,11 +2,8 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { SuspensivePoints } from '../icons/Icons'
 import { RxPencil1 } from "react-icons/rx";
 import { DeletePlaylist } from "./playlist/DeletePlaylist";
-import { useParams } from 'react-router-dom';
 
-export const DropdownPlaylistMenu = () => {
-    const { playlistId } = useParams()
-
+export const DropdownPlaylistMenu = ({ playlistId }: { playlistId: string }) => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger className="text-gray-400 hover:text-white text-2xl">

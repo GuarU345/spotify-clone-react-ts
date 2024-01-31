@@ -10,9 +10,10 @@ import { MUSIC_TYPES } from "../../utils/constants";
 type Props = {
   likedSong: SongLiked;
   index: number;
+  playlistName: string
 };
 
-export const PlaylistSongItem = ({ likedSong, index }: Props) => {
+export const PlaylistSongItem = ({ likedSong, index, playlistName }: Props) => {
   const { playlistId } = useParams();
   const { playUniqueSong } = usePlaySong();
 
@@ -63,7 +64,7 @@ export const PlaylistSongItem = ({ likedSong, index }: Props) => {
         </td>
         <td className="px-4 py-2">{likedSong.song.duration}</td>
         <td>
-          <DropdownSongMenu songId={likedSong.song.id} type={MUSIC_TYPES.PLAYLIST} />
+          <DropdownSongMenu songId={likedSong.song.id} type={MUSIC_TYPES.PLAYLIST} playlistName={playlistName} />
         </td>
       </tr>
     </>

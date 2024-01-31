@@ -11,3 +11,7 @@ export const orderedPlaylists = (a, b) => {
     }
     return 0;
 }
+
+export const onlyCreatedPlaylistsCanBeModified = (playlistName: string) => {
+    return playlistName !== INITIAL_PLAYLIST_NAME ? true : false
+}

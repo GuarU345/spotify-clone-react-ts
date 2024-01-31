@@ -40,7 +40,7 @@ const getPlaylistDataById = async (
   );
   return {
     ...data,
-    type: "Lista",
+    type: "Playlist",
   };
 };
 

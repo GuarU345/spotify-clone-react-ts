@@ -19,7 +19,7 @@ export const Banner = ({
 }: Props) => {
   return (
     <header className="flex flex-row gap-8 px-6 mt-12">
-      {legend === "Lista" ? (
+      {legend === "Playlist" ? (
         <PlaylistImage name={title} image={image} description={subparagraph} />
       ) : (
         <AlbumImage name={title} image={image} />
@@ -40,8 +40,7 @@ export const Banner = ({
             </div>
             <p className="mt-1">
               <span className="text-white">
-                {length}
-                {length > 1 ? " canciones" : " cancion"}
+                {length > 1 && `${length} canciones`}
               </span>
             </p>
           </div>
