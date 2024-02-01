@@ -20,7 +20,7 @@ export const PlaylistImage = ({
       <div className="relative group">
         <picture>
           <img
-            className="xl:w-48 xl:h-48 2xl:w-52 2xl:h-52"
+            className="xl:w-48 xl:h-48 2xl:w-52 2xl:h-52 rounded-md"
             src={image}
             alt={name}
           />
@@ -29,7 +29,7 @@ export const PlaylistImage = ({
           onClick={() => showModal(EDITPLAYLISTMODALID, { playlistId })}
           className={
             name !== "Canciones que te gustan"
-              ? "hidden absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 group-hover:flex flex-col items-center justify-center"
+              ? "hidden absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 group-hover:flex flex-col items-center justify-center rounded-md"
               : "hidden"
           }
         >

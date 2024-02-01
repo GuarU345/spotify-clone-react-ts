@@ -52,7 +52,7 @@ export const EditPlaylistInfoModal = ({ playlistId }: { playlistId: string }) =>
         </header >
         <div className="bg-zinc-800">
           <section className="flex justify-center items-stretch gap-5">
-            <img src={image} className="w-36 h-36" />
+            <img src={image} className="w-36 h-36 rounded-md" />
             <form onSubmit={handleEditPlaylist} className="flex flex-col gap-2">
               <label htmlFor="">
                 <input
