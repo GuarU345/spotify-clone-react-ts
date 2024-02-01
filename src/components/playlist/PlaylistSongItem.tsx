@@ -33,9 +33,9 @@ export const PlaylistSongItem = ({ likedSong, index, playlistName }: Props) => {
               )
             }
             title={`Reproducir ${likedSong.song.name} de ${likedSong.artist.name}`}
-            className="play-icon text-base"
+            className="play-icon"
           >
-            <BsPlayFill />
+            <BsPlayFill size={20} />
           </p>
         </td>
         <td className="px-4 py-2 whitespace-no-wrap">

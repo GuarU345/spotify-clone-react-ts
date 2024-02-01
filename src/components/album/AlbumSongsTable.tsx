@@ -59,7 +59,7 @@ export const AlbumSongsTable = ({ songs, artist }: Props) => {
             </td>
             <td className="px-4 py-2">{song.duration}</td>
             <td>
-              <DropdownSongMenu songId={song.id} type={MUSIC_TYPES.ALBUM} />
+              <DropdownSongMenu songId={song.id} type={MUSIC_TYPES.ALBUM} playlistName={""} />
             </td>
           </tr>
         ))}
