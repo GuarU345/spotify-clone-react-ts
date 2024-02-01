@@ -61,7 +61,7 @@ export const usePlayerStore = create<State & Actions>((set, get) => ({
   setCurrentSong: (currentSong) => set({ currentSong }),
   setProgress: (progress) => set({ progress }),
   playMusic: async () => {
-    const { currentMusic, currentSong, volume } = get();
+    const { currentMusic, currentSong, volume, goNextSong } = get();
     const { songs } = currentMusic;
     const findSong = songs![currentSong];
     const foundSong = STREAMSONGS.find(
@@ -88,6 +88,10 @@ export const usePlayerStore = create<State & Actions>((set, get) => ({
       const newDuration = newSound.duration();
       set({ duration: newDuration });
     });
+
+    newSound.on("end", () => {
+      goNextSong()
+    })
 
     newSound.play();
     set({ sound: newSound });

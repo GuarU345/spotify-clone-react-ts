@@ -10,9 +10,19 @@ export const usePlayer = () => {
     setIsPlaying(!isPlaying);
   };
 
-  const handleNextSong = () => goNextSong();
+  const handleNextSong = () => {
+    if (!isPlaying) {
+      setIsPlaying(true)
+    }
+    goNextSong()
+  };
 
-  const handlePreviousSong = () => goPreviousSong();
+  const handlePreviousSong = () => {
+    if (!isPlaying) {
+      setIsPlaying(true)
+    }
+    goPreviousSong()
+  };
 
   return { handleNextSong, handlePreviousSong, handlePlay };
 };
