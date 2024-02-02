@@ -34,7 +34,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
           </Routes>
         </BrowserRouter>
-        <Toaster position="bottom-center" />
+        <Toaster position="bottom-center" duration={1500} />
         <ModalContainer />
       </QueryClientProvider>
     </>

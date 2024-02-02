@@ -1,7 +1,6 @@
 import {
   DropdownMenu as Dropdown,
   DropdownMenuContent,
-  DropdownMenuPortal,
   DropdownMenuSub,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
