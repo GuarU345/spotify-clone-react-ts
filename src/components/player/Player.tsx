@@ -11,7 +11,7 @@ export const Player = () => {
   const { handlePreviousSong, handlePlay, handleNextSong } = usePlayer();
 
   return (
-    <div className="flex justify-between items-center sticky">
+    <div className="grid grid-cols-3">
       <div>
         <CurrentSongData />
       </div>
@@ -40,7 +40,7 @@ export const Player = () => {
           <SongControl />
         </section>
       </div>
-      <div>
+      <div className="flex justify-end">
         <Volume />
       </div>
     </div>
