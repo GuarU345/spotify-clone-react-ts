@@ -1,4 +1,4 @@
-const isProd = true
+const isProd = false
 
 export const API_URL = isProd ? import.meta.env.VITE_API_PROD_URL : "http://localhost:3000/api";
 
