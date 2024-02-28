@@ -21,7 +21,8 @@ export const SongControl = () => {
   useEffect(() => {
     let animationFrameId;
     const updateProgress = () => {
-      setProgress(sound.seek());
+      const currentProgress = sound.seek()
+      setProgress(currentProgress);
       animationFrameId = requestAnimationFrame(updateProgress);
     };
 

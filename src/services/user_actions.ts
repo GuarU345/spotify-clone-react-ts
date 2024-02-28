@@ -79,3 +79,12 @@ export const userReproducingSomething = async (
   });
   return data;
 };
+
+export const createSongUserState = async (token: string, body) => {
+  const { data } = await axios.post(`${API_URL}/users/songs/save`, body, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+}

@@ -19,7 +19,7 @@ export const EditPlaylistInfoModal = ({ playlistId }: { playlistId: string }) =>
   const getPlaylistById = async () => {
     const resp = await PlaylistService.getPlaylistById(userData.token!, playlistId)
     setValue("name", resp.name);
-    setValue("description", resp.description);
+    setValue("description", resp.description === null ? "" : resp.description);
     setImage(resp.image)
   }
 
@@ -31,11 +31,11 @@ export const EditPlaylistInfoModal = ({ playlistId }: { playlistId: string }) =>
     try {
       await PlaylistService.editPlaylist(userData.token!, playlistId!, body);
       toast("Playlist editada");
-      await invalidate('playlistData');
-      await invalidate('likedData')
-      hideModal();
     } catch (error) {
       toast("No se pudo editar su playlist");
+    } finally {
+      await invalidate('playlistData');
+      await invalidate('likedData')
       hideModal();
     }
   });

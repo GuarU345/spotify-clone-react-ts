@@ -4,13 +4,17 @@ import { usePlayerStore } from "../../store/usePlayerStore";
 
 export const UserPanel = () => {
   const { setIsLogin, setUserData } = useAuthStore();
-  const { sound } = usePlayerStore();
+  const { sound, setIsPlaying, setCurrentMusic, setCurrentSong, setProgress } = usePlayerStore();
   const navigate = useNavigate();
   const handleLogout = async () => {
     setIsLogin(false);
     setUserData({ token: null, user_id: null });
     if (sound) {
       sound.stop();
+      setIsPlaying(false)
+      setCurrentSong(undefined)
+      setProgress(null)
+      setCurrentMusic({ id: null, songId: null, songs: null, type: null })
     }
     navigate("/signin");
   };

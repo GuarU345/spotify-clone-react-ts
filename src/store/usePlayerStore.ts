@@ -26,8 +26,8 @@ interface Actions {
   setIsPlaying: (state: boolean) => void;
   setVolume: (state: number) => void;
   setCurrentMusic: (state: CurrentMusic) => void;
-  setCurrentSong: (state: number) => void;
-  setProgress: (state: string) => void;
+  setCurrentSong: (state: number | undefined) => void;
+  setProgress: (state: string | null) => void;
   playMusic: () => void;
   goNextSong: () => void;
   goPreviousSong: () => void;
