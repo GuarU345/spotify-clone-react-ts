@@ -1,4 +1,6 @@
-export const API_URL = "http://localhost:3000/api";
+const isProd = true
+
+export const API_URL = isProd ? import.meta.env.VITE_API_PROD_URL : "http://localhost:3000/api";
 
 export const INITIAL_PLAYLIST_NAME = "Canciones que te gustan";
 
