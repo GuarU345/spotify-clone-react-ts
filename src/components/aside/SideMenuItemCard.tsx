@@ -7,7 +7,7 @@ import { HiSpeakerWave } from "react-icons/hi2";
 export const SideMenuItemCard = () => {
   const { userData } = useAuthStore();
   const { currentMusic, isPlaying } = usePlayerStore();
-  const { data, isLoading } = useFetchLikedData(
+  const { data } = useFetchLikedData(
     userData.token!,
     userData.user_id!
   );
