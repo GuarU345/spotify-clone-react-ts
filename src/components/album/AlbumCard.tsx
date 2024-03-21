@@ -4,7 +4,7 @@ import { CardPlayButton } from "../player/CardPlayButton";
 import { MUSIC_TYPES } from "../../utils/constants";
 
 type Props = {
-  album: Album;
+  album?: Album;
 };
 
 export const AlbumCard = ({ album }: Props) => {
@@ -17,26 +17,26 @@ export const AlbumCard = ({ album }: Props) => {
           z-10
         `}
       >
-        <CardPlayButton id={album.id} type={MUSIC_TYPES.ALBUM} />
+        <CardPlayButton id={album?.id!} type={MUSIC_TYPES.ALBUM} />
       </div>
       <Link
         className="transition-all duration-300 w-44 flex flex-col relative p-2 overflow-hidden gap-2 pb-6"
-        to={`/album/${album.id}`}
+        to={`/album/${album?.id}`}
       >
         <picture className="aspect-square w-full h-auto flex-none">
           <img
             className="object-cover w-full h-full rounded-md"
-            src={album.album_image}
-            alt={album.name}
+            src={album?.album_image}
+            alt={album?.name}
           />
         </picture>
         <div className="flex flex-auto flex-col px-2">
           <h4 className="text-white font-bold truncate text-sm">
-            {album.name}
+            {album?.name}
           </h4>
 
           <p className="text-xs text-gray-400 mb-6 hover:underline">
-            {album.artist.name}
+            {album?.artist.name}
           </p>
         </div>
       </Link>

@@ -7,18 +7,13 @@ import { HiSpeakerWave } from "react-icons/hi2";
 export const SideMenuItemCard = () => {
   const { userData } = useAuthStore();
   const { currentMusic, isPlaying } = usePlayerStore();
-  const { data, isLoading } = useFetchLikedData(
+  const { data } = useFetchLikedData(
     userData.token!,
     userData.user_id!
   );
 
   return (
     <>
-      {isLoading && (
-        <>
-          <p>loading...</p>
-        </>
-      )}
       <ul className="flex flex-col gap-2">
         {data?.map((likedData) => (
           <Link

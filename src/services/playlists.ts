@@ -12,6 +12,15 @@ const getUserPlaylists = async (token: string, userId: string) => {
   return data
 };
 
+const getUserPlaylistsCount = async (token: string, userId: string) => {
+  const { data } = await axios.get(`${API_URL}/users/${userId}/playlists/count`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data
+}
+
 const addPlaylist = async (token: string, userId: string) => {
   const { data } = await axios.post(
     `${API_URL}/users/${userId}/playlists`,
@@ -108,6 +117,7 @@ const deletePlaylist = async (token: string, playlistId) => {
 export const PlaylistService = {
   getPlaylistDataById,
   getUserPlaylists,
+  getUserPlaylistsCount,
   getPlaylistById,
   addPlaylist,
   addSongToPlaylist,
