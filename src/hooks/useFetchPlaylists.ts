@@ -17,3 +17,9 @@ export const useFetchUserPlaylists = (token: string, id: string) => {
     return result.filter((res) => res.name !== "Canciones que te gustan");
   });
 };
+
+export const useFetchUserPlaylistsCount = (token: string, id: string) => {
+  return useQuery("userPlaylistsCount", async () => {
+    return await PlaylistService.getUserPlaylistsCount(token, id)
+  })
+}

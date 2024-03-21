@@ -14,11 +14,6 @@ export const SideMenuItemCard = () => {
 
   return (
     <>
-      {isLoading && (
-        <>
-          <p>loading...</p>
-        </>
-      )}
       <ul className="flex flex-col gap-2">
         {data?.map((likedData) => (
           <Link
