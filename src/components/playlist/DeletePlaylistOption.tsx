@@ -4,15 +4,18 @@ import { PlaylistService } from '../../services/playlists'
 import { useAuthStore } from '../../store/useAuthStore'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
+import { useInvalidateQuery } from '../../hooks/useInvalidateQuery'
 
 export const DeletePlaylistOption = ({ playlistId }: { playlistId: string }) => {
     const { userData } = useAuthStore()
     const navigate = useNavigate()
+    const { invalidate } = useInvalidateQuery()
 
     const handleRemovePlaylist = async () => {
         try {
             toast.dismiss()
             await PlaylistService.deletePlaylist(userData.token!, playlistId)
+            await invalidate("likedData")
             toast('Eliminada de tu biblioteca')
             navigate('/')
         } catch (error) {
