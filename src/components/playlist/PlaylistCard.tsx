@@ -5,12 +5,13 @@ import { MUSIC_TYPES } from "../../utils/constants";
 
 interface Props {
   playlist?: PlaylistInfo;
+  haveSongs: boolean
 }
 
-export const PlaylistCard = ({ playlist }: Props) => {
+export const PlaylistCard = ({ playlist, haveSongs }: Props) => {
   return (
     <>
-      {playlist?.haveSongs && <article className="flex group relative shadow-lg hover:bg-white/20 bg-zinc-500/30 rounded-md">
+      {haveSongs && <article className="flex group relative shadow-lg hover:bg-white/20 bg-zinc-500/30 rounded-md">
         <div
           className={`absolute right-2  translate-y-2
           transition-all duration-500 opacity-0

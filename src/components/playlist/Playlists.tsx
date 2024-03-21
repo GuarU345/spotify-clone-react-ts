@@ -12,10 +12,10 @@ export const Playlists = () => {
     return (
         <div className="grid grid-cols-3 gap-2">
             {isLoading && playlistArray.map((_, index) => (
-                <PlaylistCard key={index} />
+                <PlaylistCard key={index} haveSongs={true} />
             ))}
             {playlists?.map((playlist) => (
-                <PlaylistCard key={playlist.id} playlist={playlist} />
+                <PlaylistCard key={playlist.id} playlist={playlist} haveSongs={playlist.haveSongs} />
             ))}
         </div>
     )
