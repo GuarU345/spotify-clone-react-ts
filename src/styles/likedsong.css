@@ -1,14 +1,14 @@
 .index-row:hover {
     & .number-song {
-        display: none;
+        visibility: hidden;
     }
 
     & .play-icon {
-        display: block;
+        visibility: visible;
         color: white;
     }
 }
 
 .play-icon {
-    display: none;
+    visibility: hidden;
 }
