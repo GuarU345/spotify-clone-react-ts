@@ -49,10 +49,6 @@ export const AlbumPage = () => {
           <AlbumLike albumId={albumId!} />
         </div>
 
-        <div className="relative z-10 px-6 pt-10"></div>
-
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 z-[-1]"></div>
-
         <section className="p-6">
           <AlbumSongsTable songs={album?.songs} artist={album?.artist} />
         </section>
