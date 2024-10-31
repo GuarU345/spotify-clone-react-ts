@@ -26,7 +26,7 @@ export const PlaylistPage = () => {
           <p>Loading...</p>
         </>
       )}
-      <div className="relative flex flex-col h-full overflow-x-hidden z-10 bg-gradient-to-b from-violet-600 from-20% via-zinc-950">
+      <div className="relative flex flex-col h-full overflow-x-hidden z-10" style={{ background: `linear-gradient(to bottom,#592698 10%,#18181b 45%)`,}}>
         <Banner
           image={playlist?.image}
           legend={playlist?.type}
