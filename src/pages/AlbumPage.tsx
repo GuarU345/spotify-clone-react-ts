@@ -32,7 +32,7 @@ export const AlbumPage = () => {
       )}
       <div
         style={{
-          background: `linear-gradient(to top,#18181b 10%,${album?.color} 70%)`,
+          background: `linear-gradient(to bottom,#18181b 10%,${album?.color} 70%)`,
         }}
         className={`relative flex flex-col h-full overflow-x-hidden z-10`}
       >
