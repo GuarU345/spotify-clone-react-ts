@@ -28,20 +28,20 @@ export const useLikeAlbum = (albumId: string) => {
 
   const handleLikeAlbum = async () => {
     toast.dismiss();
+    let message = ""
 
     try {
       if (!isLiked) {
         await likeAlbum(userData.token!, userData.user_id!, albumId);
-        setIsLiked(true);
-        await invalidate("likedData");
-        toast("Añadido a tu biblioteca");
-        return;
+        message = "añadido a tu biblioteca"
+      } else {
+        await dislikeAlbum(userData.token!, userData.user_id!, albumId);
+        message = "Se ha quitado de tu biblioteca"
       }
 
-      await dislikeAlbum(userData.token!, userData.user_id!, albumId);
-      setIsLiked(false);
+      setIsLiked((prev) => !prev)
       await invalidate("likedData");
-      toast("Se ha quitado de tu biblioteca");
+      toast(message);
     } catch (error) {
       console.log(error);
     }

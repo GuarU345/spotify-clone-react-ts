@@ -6,32 +6,32 @@ import { useInvalidateQuery } from "./useInvalidateQuery";
 
 export const useLikeSong = (songId: string, liked: boolean) => {
   const [isLiked, setIsLiked] = useState<boolean>(liked);
-  const { userData } = useAuthStore();
+  const { token, user_id } = useAuthStore().userData;
   const { invalidate } = useInvalidateQuery();
 
+  const updateCache = async () => {
+    await invalidate("playlistData");
+    await invalidate("albumData");
+  }
+
   const handleLike = async () => {
-    if (liked === false) {
-      try {
-        toast.dismiss();
-        await likeSong(userData.token!, userData.user_id!, songId);
-        setIsLiked(true);
-        await invalidate("playlistData");
-        await invalidate("albumData");
-        toast("Añadida a canciones que te gustan");
-      } catch (error) {
-        console.error(error);
+    toast.dismiss();
+    let message = ""
+
+    try {
+      if (!isLiked) {
+        await likeSong(token!, user_id!, songId);
+        message = "Añadida a canciones que te gustan"
+      } else {
+        await dislikeSong(token!, user_id!, songId);
+        message = "Quitada de las canciones que te gustan"
       }
-    } else {
-      try {
-        toast.dismiss();
-        await dislikeSong(userData.token!, userData.user_id!, songId);
-        setIsLiked(false);
-        await invalidate("playlistData");
-        await invalidate("albumData");
-        toast("Quitada de las canciones que te gustan");
-      } catch (error) {
-        console.error(error);
-      }
+
+      setIsLiked(prev => !prev)
+      toast(message)
+      await updateCache()
+    } catch (error) {
+      console.error(error);
     }
   };
 
